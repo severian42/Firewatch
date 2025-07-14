@@ -1,0 +1,1 @@
+{"name":"Firewatch PWA","short_name":"Firewatch","start_url":"/","display":"standalone","background_color":"#1a202c","theme_color":"#1a202c","lang":"en","scope":"/","icons":[{"src":"icons/icon-192x192.png","sizes":"192x192","type":"image/png"},{"src":"icons/icon-512x512.png","sizes":"512x512","type":"image/png"}]}
