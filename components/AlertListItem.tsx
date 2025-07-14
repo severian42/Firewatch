@@ -73,10 +73,15 @@ const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
         <p className="mt-2 text-gray-300 leading-relaxed text-sm">
           {alert.description}
         </p>
-        {/* Disclaimer for Alert Status */}
-        <div className="mt-2 text-yellow-100 bg-yellow-800 border border-yellow-600 px-3 py-2 rounded-lg text-xs shadow-sm">
-          <p className="font-semibold">Area Status: <span className="text-red-400">High Threat - Red</span></p>
-          <p className="mt-1">Status is based on community reports and may not be comprehensive.</p>
+        {/* Disclaimer for Alert Status - Enhanced */}
+        <div className="mt-3 p-3 bg-red-900/40 border border-red-700 rounded-lg text-red-200 text-sm shadow-inner">
+          <p className="font-bold flex items-center">
+            <ExclamationTriangleIcon className="w-5 h-5 mr-2 text-red-400" />
+            Status Note:
+          </p>
+          <p className="mt-1 text-xs leading-tight">
+            The current status (<span className="font-bold text-red-400">Area Status: High Threat - Red</span>) is based on community-sourced reports and may not be exhaustive or immediately verifiable. Always prioritize your safety and cross-reference information if possible.
+          </p>
         </div>
       </div>
     </div>
