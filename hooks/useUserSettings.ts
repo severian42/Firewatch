@@ -8,6 +8,8 @@ const USER_SETTINGS_KEY = 'firewatch_user_settings';
 const defaultSettings: UserSettings = {
     fallbackLocation: { city: '', state: '', zip: '' },
     emergencyContacts: DEFAULT_EMERGENCY_CONTACTS,
+    geminiApiKey: '',
+    geminiModel: 'gemini-2.0-flash-exp',
 };
 
 const getStoredSettings = (): UserSettings => {

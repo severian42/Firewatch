@@ -74,6 +74,8 @@ export interface FallbackLocation {
 export interface UserSettings {
   fallbackLocation: FallbackLocation;
   emergencyContacts: EmergencyContact[];
+  geminiApiKey?: string;
+  geminiModel?: string;
 }
 
 export interface RecordingLawResult {

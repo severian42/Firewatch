@@ -8,7 +8,15 @@ const SettingsScreen: React.FC = () => {
   const { settings, saveSettings } = useUserSettings();
   const [location, setLocation] = useState<FallbackLocation>(settings.fallbackLocation);
   const [contacts, setContacts] = useState<EmergencyContact[]>(settings.emergencyContacts);
+  const [geminiApiKey, setGeminiApiKey] = useState<string>(settings.geminiApiKey || '');
+  const [geminiModel, setGeminiModel] = useState<string>(settings.geminiModel || 'gemini-2.0-flash-exp');
   const [savedMessage, setSavedMessage] = useState<string>('');
+
+  const availableModels = [
+    { value: 'gemini-2.0-flash-exp', label: 'Gemini 2.0 Flash (Experimental)' },
+    { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
+    { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro' },
+  ];
 
   const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
@@ -34,7 +42,12 @@ const SettingsScreen: React.FC = () => {
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     const validContacts = contacts.filter(c => c.name.trim() !== '' && c.phone.trim() !== '');
-    saveSettings({ fallbackLocation: location, emergencyContacts: validContacts });
+    saveSettings({ 
+      fallbackLocation: location, 
+      emergencyContacts: validContacts,
+      geminiApiKey: geminiApiKey.trim(),
+      geminiModel
+    });
     setSavedMessage('Settings saved successfully!');
     setTimeout(() => setSavedMessage(''), 3000); // Hide message after 3 seconds
   };

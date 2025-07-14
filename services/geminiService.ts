@@ -2,7 +2,33 @@
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
 import type { Alert, Location, ScanResult, RecordingLawResult, JargonBusterResult } from '../types';
 
-const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY as string });
+// Get user settings from localStorage for API key and model
+const getUserSettings = () => {
+  try {
+    const stored = localStorage.getItem('firewatch_user_settings');
+    if (stored) {
+      const settings = JSON.parse(stored);
+      return {
+        apiKey: settings.geminiApiKey || import.meta.env.VITE_GEMINI_API_KEY,
+        model: settings.geminiModel || 'gemini-2.0-flash-exp'
+      };
+    }
+  } catch (error) {
+    console.error('Error reading user settings:', error);
+  }
+  return {
+    apiKey: import.meta.env.VITE_GEMINI_API_KEY,
+    model: 'gemini-2.0-flash-exp'
+  };
+};
+
+const getAI = () => {
+  const settings = getUserSettings();
+  if (!settings.apiKey) {
+    throw new Error('No Gemini API key configured. Please set your API key in Settings.');
+  }
+  return new GoogleGenAI({ apiKey: settings.apiKey });
+};
 
 const alertSchema = {
   type: Type.OBJECT,
@@ -21,9 +47,11 @@ const alertSchema = {
 
 export const generateNewAlert = async (): Promise<Alert | null> => {
   try {
+    const ai = getAI();
+    const { model } = getUserSettings();
     const prompt = `Generate a new, realistic-sounding community safety alert for the "Firewatch" civil rights app. The alert should be relevant to potential unconstitutional government enforcement actions against civilians. It can be an unconfirmed report. It must conform to the provided JSON schema. Make the title and description compelling and informative. The timestamp should be the current time. The ID should be unique. The 'verified' status should be false.`;
     const response: GenerateContentResponse = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model,
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -51,6 +79,8 @@ export const generateNewAlert = async (): Promise<Alert | null> => {
 
 export const scanForLocalAlerts = async (location: Location | string): Promise<ScanResult | null> => {
     try {
+        const ai = getAI();
+        const { model } = getUserSettings();
         const locationContext = typeof location === 'string'
             ? `in or around ${location}`
             : `around latitude ${location.lat} and longitude ${location.lon}`;
@@ -58,7 +88,7 @@ export const scanForLocalAlerts = async (location: Location | string): Promise<S
         const prompt = `Perform a search for recent events ${locationContext}. Scan for news articles, social media discussions, and official alerts posted in the last 48 hours. Focus on topics relevant to a civil rights protection app, such as: - Protests or demonstrations - Law enforcement activity (e.g., police checkpoints, ICE raids, increased patrols) - Community safety alerts - Reports of rights violations. Provide a concise summary of your findings. If there are no relevant events, state that the area appears clear based on available data.`;
 
         const response: GenerateContentResponse = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
+            model,
             contents: prompt,
             config: {
                 tools: [{ googleSearch: {} }],
@@ -126,9 +156,11 @@ const jargonBusterSchema = {
 
 export const explainLegalTerm = async (term: string): Promise<JargonBusterResult | null> => {
     try {
+        const ai = getAI();
+        const { model } = getUserSettings();
         const prompt = `Explain the legal term "${term}" in simple, easy-to-understand language for a non-lawyer. Keep the explanation to 1-2 sentences. Respond ONLY with the JSON object.`;
         const response = await ai.models.generateContent({
-            model: 'gemini-2.5-flash',
+            model,
             contents: prompt,
             config: {
                 responseMimeType: "application/json",
