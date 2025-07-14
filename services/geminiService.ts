@@ -10,7 +10,7 @@ const getUserSettings = () => {
       const settings = JSON.parse(stored);
       return {
         apiKey: settings.geminiApiKey || '',
-        model: settings.geminiModel || 'gemini-2.0-flash-exp'
+        model: settings.geminiModel || 'gemini-2.5-flash'
       };
     }
   } catch (error) {
