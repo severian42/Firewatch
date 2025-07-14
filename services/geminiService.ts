@@ -9,7 +9,7 @@ const getUserSettings = () => {
     if (stored) {
       const settings = JSON.parse(stored);
       return {
-        apiKey: settings.geminiApiKey || import.meta.env.VITE_GEMINI_API_KEY,
+        apiKey: settings.geminiApiKey || '',
         model: settings.geminiModel || 'gemini-2.0-flash-exp'
       };
     }
@@ -17,7 +17,7 @@ const getUserSettings = () => {
     console.error('Error reading user settings:', error);
   }
   return {
-    apiKey: import.meta.env.VITE_GEMINI_API_KEY,
+    apiKey: '',
     model: 'gemini-2.0-flash-exp'
   };
 };

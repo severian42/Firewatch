@@ -102,7 +102,7 @@ const SettingsScreen: React.FC = () => {
             <div>
               <label htmlFor="geminiApiKey" className="block mb-2 text-sm font-medium text-gray-300">
                 Gemini API Key
-                <span className="text-gray-500 font-normal ml-1">(Optional - uses developer key if empty)</span>
+                <span className="text-red-400 font-normal ml-1">(Required for AI features)</span>
               </label>
               <input 
                 type="password" 
@@ -113,7 +113,7 @@ const SettingsScreen: React.FC = () => {
                 className="bg-gray-700 border border-gray-600 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
               />
               <p className="text-xs text-gray-500 mt-1">
-                Get your API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Google AI Studio</a>
+                Get your API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Google AI Studio</a>. AI features will not work without this.
               </p>
             </div>
             <div>
