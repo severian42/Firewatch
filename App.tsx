@@ -15,6 +15,7 @@ import EmergencyModal from './components/EmergencyModal';
 import CameraView from './components/CameraView';
 import { useUserSettings } from './hooks/useUserSettings';
 import { useEvidence } from './hooks/useEvidence';
+import PWAPrompt from './components/PWAPrompt';
 
 const App: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState<Screen>('Home');
@@ -102,6 +103,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex flex-col h-screen max-h-dvh bg-gray-900 text-gray-100">
+      <PWAPrompt />
       <Header />
       <main className="flex-1 overflow-y-auto pb-24">
         <div className="container mx-auto px-4 py-6">
