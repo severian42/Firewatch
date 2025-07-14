@@ -9,7 +9,7 @@ const defaultSettings: UserSettings = {
     fallbackLocation: { city: '', state: '', zip: '' },
     emergencyContacts: DEFAULT_EMERGENCY_CONTACTS,
     geminiApiKey: '',
-    geminiModel: 'gemini-2.0-flash-exp',
+    geminiModel: 'gemini-2.5-flash',
 };
 
 const getStoredSettings = (): UserSettings => {
