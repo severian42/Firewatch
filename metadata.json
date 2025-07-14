@@ -1,0 +1,8 @@
+{
+  "name": "Firewatch",
+  "description": "Firewatch: Community. Vigilance. Protection. Your tool for watching out for constitutional rights.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
