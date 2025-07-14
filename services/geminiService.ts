@@ -59,7 +59,7 @@ export const generateNewAlert = async (): Promise<Alert | null> => {
       },
     });
 
-    const jsonText = response.text.trim();
+    const jsonText = response.text?.trim();
     if (!jsonText) {
         console.error('Gemini API returned an empty response.');
         return null;
@@ -107,7 +107,7 @@ export const scanForLocalAlerts = async (location: Location | string): Promise<S
                 self.findIndex((s: any) => s.uri === value.uri) === index
             );
 
-        return { text, sources };
+        return { text: response.text || '', sources };
 
     } catch (error)
     {
@@ -128,6 +128,7 @@ const recordingLawSchema = {
 
 export const getRecordingLaw = async (state: string): Promise<RecordingLawResult | null> => {
     try {
+        const ai = getAI();
         const prompt = `Analyze the laws for the state of "${state}". Is it a "One-Party" or "Two-Party" consent state for recording audio conversations where there is a reasonable expectation of privacy? If the law is complex (e.g., differs for in-person vs. electronic), classify as "Varies". Provide a brief, one-sentence summary for a layperson. Include a disclaimer. Respond ONLY with the JSON object.`;
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
@@ -137,7 +138,11 @@ export const getRecordingLaw = async (state: string): Promise<RecordingLawResult
                 responseSchema: recordingLawSchema,
             },
         });
-        const jsonText = response.text.trim();
+        const jsonText = response.text?.trim();
+        if (!jsonText) {
+            console.error(`Gemini API returned an empty response for recording law for ${state}.`);
+            return null;
+        }
         return JSON.parse(jsonText) as RecordingLawResult;
     } catch (error) {
         console.error(`Error fetching recording law for ${state}:`, error);
@@ -167,7 +172,11 @@ export const explainLegalTerm = async (term: string): Promise<JargonBusterResult
                 responseSchema: jargonBusterSchema,
             },
         });
-        const jsonText = response.text.trim();
+        const jsonText = response.text?.trim();
+        if (!jsonText) {
+            console.error(`Gemini API returned an empty response for legal term "${term}".`);
+            return null;
+        }
         return JSON.parse(jsonText) as JargonBusterResult;
     } catch (error) {
         console.error(`Error explaining legal term "${term}":`, error);
