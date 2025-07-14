@@ -73,6 +73,11 @@ const AlertListItem: React.FC<AlertListItemProps> = ({ alert }) => {
         <p className="mt-2 text-gray-300 leading-relaxed text-sm">
           {alert.description}
         </p>
+        {/* Disclaimer for Alert Status */}
+        <div className="mt-2 text-yellow-100 bg-yellow-800 border border-yellow-600 px-3 py-2 rounded-lg text-xs shadow-sm">
+          <p className="font-semibold">Area Status: <span className="text-red-400">High Threat - Red</span></p>
+          <p className="mt-1">Status is based on community reports and may not be comprehensive.</p>
+        </div>
       </div>
     </div>
   );
