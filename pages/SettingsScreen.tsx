@@ -93,6 +93,49 @@ const SettingsScreen: React.FC = () => {
           </div>
         </div>
 
+        {/* Gemini AI Settings */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h2 className="text-xl font-semibold text-blue-400 mb-2">AI Configuration</h2>
+          <p className="text-gray-400 text-sm mb-4">
+            Configure your own Gemini API key and model for AI-powered features like area scanning and legal assistance.
+          </p>
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="geminiApiKey" className="block mb-2 text-sm font-medium text-gray-300">
+                Gemini API Key
+                <span className="text-gray-500 font-normal ml-1">(Optional - uses developer key if empty)</span>
+              </label>
+              <input 
+                type="password" 
+                id="geminiApiKey" 
+                value={geminiApiKey} 
+                onChange={(e) => setGeminiApiKey(e.target.value)}
+                placeholder="Enter your Gemini API key"
+                className="bg-gray-700 border border-gray-600 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+              />
+              <p className="text-xs text-gray-500 mt-1">
+                Get your API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Google AI Studio</a>
+              </p>
+            </div>
+            <div>
+              <label htmlFor="geminiModel" className="block mb-2 text-sm font-medium text-gray-300">AI Model</label>
+              <select 
+                id="geminiModel" 
+                value={geminiModel} 
+                onChange={(e) => setGeminiModel(e.target.value)}
+                className="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              >
+                {availableModels.map(model => (
+                  <option key={model.value} value={model.value}>{model.label}</option>
+                ))}
+              </select>
+              <p className="text-xs text-gray-500 mt-1">
+                Different models have varying capabilities and costs. Flash models are faster and cheaper.
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Emergency Contacts Settings */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
           <h2 className="text-xl font-semibold text-blue-400 mb-2">Emergency Contacts</h2>
