@@ -21,8 +21,8 @@ const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiv
     }
   
     const highestPriorityAlert = criticalAlerts.sort((a, b) => {
-        const priority = { 'Immediate Threat': 3, 'Area Watch': 2, 'Pattern Alert': 1 };
-        return priority[b.type] - priority[a.type];
+        const priority: { [key: string]: number } = { 'Immediate Threat': 3, 'Area Watch': 2, 'Pattern Alert': 1 };
+        return (priority[b.type] || 0) - (priority[a.type] || 0);
     })[0];
   
     if (highestPriorityAlert.type === 'Immediate Threat') {
@@ -55,14 +55,19 @@ const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiv
       case 'legal_hotline':
         const legalOrgs = resourceData.find(cat => cat.id === 'legal_orgs');
         const aclu = legalOrgs?.resources.find(res => res.name.includes('ACLU'));
-        const hotline = aclu?.phone?.replace(/\D/g, '');
 
-        if (hotline) {
-          if (confirm(`You are about to call ${aclu.name} (${aclu.phone}). Do you want to proceed?`)) {
-            window.location.href = `tel:${hotline}`;
+        if (aclu) {
+          const hotline = aclu.phone?.replace(/\D/g, '');
+
+          if (hotline) {
+            if (confirm(`You are about to call ${aclu.name} (${aclu.phone}). Do you want to proceed?`)) {
+              window.location.href = `tel:${hotline}`;
+            }
+          } else {
+            alert('Legal hotline number not found.');
           }
         } else {
-          alert('Legal hotline number not found.');
+          alert('ACLU resource not found.');
         }
         break;
 
@@ -113,6 +118,18 @@ const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiv
       <div>
         <h1 className="text-3xl font-bold text-gray-100">Dashboard</h1>
         <p className="mt-1 text-gray-400">Quick access to emergency tools and status updates.</p>
+      </div>
+
+      {/* Disclaimer for Mock Data - Homepage */}
+      <div className="bg-red-900 border border-red-700 text-red-100 px-6 py-4 rounded-lg text-center my-6 shadow-xl animate-pulse">
+        <p className="font-bold text-lg mb-2">🚨 Attention: Test Data Displayed! 🚨</p>
+        <p className="text-sm leading-relaxed">
+          Currently, you're viewing <span className="font-bold text-red-50">sample alerts</span> for demonstration purposes. These are not live, real-time incidents.
+          To ensure your safety and receive accurate, localized threat intelligence,
+          please <a href="/settings" className="underline font-bold text-red-50 hover:text-white transition-colors duration-200">securely configure your API key in Settings</a>.
+          Once set up, activate the <span className="font-bold text-red-50">Location Scanner</span> below to actively monitor your immediate area.
+          Your protection is our priority, and live data ensures you're truly informed.
+        </p>
       </div>
 
       <div className="bg-gray-800 rounded-lg p-4 shadow-lg">
