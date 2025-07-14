@@ -13,9 +13,8 @@ const SettingsScreen: React.FC = () => {
   const [savedMessage, setSavedMessage] = useState<string>('');
 
   const availableModels = [
-    { value: 'gemini-2.0-flash-exp', label: 'Gemini 2.0 Flash (Experimental)' },
-    { value: 'gemini-1.5-flash', label: 'Gemini 1.5 Flash' },
-    { value: 'gemini-1.5-pro', label: 'Gemini 1.5 Pro' },
+    { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
+    { value: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro' },
   ];
 
   const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
