@@ -92,10 +92,24 @@ const GuideScreen: React.FC = () => {
 
       <div className="mt-8 bg-gray-800 rounded-lg p-6">
         <h3 className="text-xl font-bold text-yellow-400 mb-4">⚠️ Important Legal Notice</h3>
-        <p className="text-gray-300">
+        <p className="text-gray-300 mb-4">
           This app provides information and tools for educational purposes. It is not a substitute for professional legal advice. 
           Always consult with a qualified attorney for legal matters. Laws vary by jurisdiction and may change over time.
         </p>
+        <div className="text-gray-500 text-sm pt-3 border-t border-gray-700">
+          <p>
+            Firewatch was developed with advanced AI assistance by{' '}
+            <a 
+              href="https://www.interwoven-arkitech.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 underline"
+            >
+              Interwoven Arkitech
+            </a>
+            {' '}to ensure robust, reliable civil rights protection tools.
+          </p>
+        </div>
       </div>
     </div>
   );

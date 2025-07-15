@@ -165,15 +165,31 @@ const SettingsScreen: React.FC = () => {
           <p className="text-gray-400 text-sm mb-4">
             Firewatch is an open-source project. You can find the source code on GitHub.
           </p>
-          <a 
-            href="https://github.com/severian42/Firewatch"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
-          >
-            <GithubIcon className="w-5 h-5" />
-            Firewatch GitHub Repository
-          </a>
+          <div className="space-y-3">
+            <a 
+              href="https://github.com/severian42/Firewatch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
+            >
+              <GithubIcon className="w-5 h-5" />
+              Firewatch GitHub Repository
+            </a>
+            <div className="text-gray-500 text-sm">
+              <p>
+                Developed with AI assistance by{' '}
+                <a 
+                  href="https://www.interwoven-arkitech.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  Interwoven Arkitech
+                </a>
+                {' '}— Custom AI solutions for modern development challenges.
+              </p>
+            </div>
+          </div>
         </div>
         
         {/* Privacy & Security Disclaimers */}

@@ -250,6 +250,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **National Lawyers Guild**: Know Your Rights materials
 - **EFF**: Digital rights and privacy best practices
 - **Community Contributors**: Translations, testing, and feedback
+- **[Interwoven Arkitech](https://www.interwoven-arkitech.com/)**: AI-powered development and architectural guidance
 
 ---
 
