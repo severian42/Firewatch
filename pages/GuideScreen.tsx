@@ -4,15 +4,9 @@ import { enhancedResources } from '../data/resourceData';
 import { documentationContent } from '../data/documentationContent';
 import { ChevronDownIcon, ArrowLeftIcon, InformationCircleIcon, PhoneIcon, GlobeAltIcon, LifebuoyIcon } from '../components/Icons';
 import FormattedContent from '../components/FormattedContent';
-import type { ResourceCategory } from '../types';
 
 const GuideScreen: React.FC = () => {
   const [view, setView] = useState<'index' | 'docs' | 'resources'>('index');
-  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
-
-  const toggleAccordion = (id: string) => {
-    setOpenAccordion(openAccordion === id ? null : id);
-  };
 
   if (view === 'docs') {
     return (
@@ -46,7 +40,7 @@ const GuideScreen: React.FC = () => {
             <div key={category.category} className="bg-gray-800 rounded-lg p-6">
               <h3 className="text-xl font-bold text-blue-400 mb-4">{category.category}</h3>
               <div className="space-y-4">
-                {category.items.map((item: ResourceCategory['items'][0], index) => (
+                {category.items.map((item: any, index: number) => (
                   <div key={index} className="bg-gray-700 p-4 rounded-lg">
                     <h4 className="font-semibold text-white">{item.name}</h4>
                     <p className="text-sm text-gray-300 mb-2">{item.description}</p>

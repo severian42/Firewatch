@@ -80,7 +80,7 @@ const App: React.FC = () => {
   const renderScreen = () => {
     switch (activeScreen) {
       case 'Home':
-        return <HomeScreen setActiveScreen={setActiveScreen} />;
+        return <HomeScreen setActiveScreen={setActiveScreen} onPanicActivate={handlePanicActivate} />;
       case 'Alerts':
         return <AlertsScreen />;
       case 'Rights':

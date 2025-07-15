@@ -4,19 +4,55 @@ import React from 'react';
 import DashboardToolkit from '../components/DashboardToolkit';
 import EvidenceListItem from '../components/EvidenceListItem';
 import { useEvidence } from '../hooks/useEvidence';
+import { ShieldExclamationIcon } from '../components/Icons';
 import type { Screen } from '../types';
 
 interface HomeScreenProps {
   setActiveScreen: (screen: Screen) => void;
+  onPanicActivate?: () => void;
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ setActiveScreen }) => {
+const HomeScreen: React.FC<HomeScreenProps> = ({ setActiveScreen, onPanicActivate }) => {
   const { evidence } = useEvidence();
 
   return (
     <div className="bg-gray-900">
       
       <div className="max-w-6xl mx-auto px-4 py-6">
+        {/* Emergency Panic Button */}
+        {onPanicActivate && (
+          <div className="mb-8">
+            <button
+              onClick={onPanicActivate}
+              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 px-8 rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] animate-pulse-slow hover:animate-none relative overflow-hidden"
+              aria-label="Emergency Panic Button - Activates emergency broadcast and recording"
+            >
+              <div className="flex items-center justify-center space-x-4">
+                <ShieldExclamationIcon className="w-12 h-12" />
+                <div className="text-left">
+                  <div className="text-2xl font-black">EMERGENCY</div>
+                  <div className="text-sm opacity-90">Tap to activate panic mode</div>
+                </div>
+                <ShieldExclamationIcon className="w-12 h-12" />
+              </div>
+              {/* Pulsing background effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 opacity-0 hover:opacity-20 transition-opacity duration-300"></div>
+              <style>{`
+                @keyframes pulse-slow {
+                  0%, 100% {
+                    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+                  }
+                  70% {
+                    box-shadow: 0 0 0 20px rgba(220, 38, 38, 0);
+                  }
+                }
+                .animate-pulse-slow {
+                  animation: pulse-slow 3s infinite;
+                }
+              `}</style>
+            </button>
+          </div>
+        )}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-md p-6 mb-6">
