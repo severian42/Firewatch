@@ -137,6 +137,11 @@ const App: React.FC = () => {
         activeScreen={activeScreen}
         setActiveScreen={setActiveScreen}
       />
+      <footer className="w-full py-2 text-center text-gray-500 text-xs">
+        <a href="https://github.com/severian42/Firewatch" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+          GitHub
+        </a>
+      </footer>
       <style>{`
         /* Modern mobile browsers have dynamic toolbars. 
            max-h-dvh helps prevent the layout from jumping. */
