@@ -1,7 +1,6 @@
 # 🔥 Firewatch
 ## Civil Rights Protection & Documentation App
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PWA](https://img.shields.io/badge/PWA-enabled-brightgreen.svg)](https://web.dev/progressive-web-apps/)
 [![Privacy First](https://img.shields.io/badge/Privacy-First-blue.svg)](#privacy--security)
 
@@ -104,7 +103,7 @@ AI features (area scanning, legal jargon explanations) require a free Gemini API
 - **Legal jargon explanations**: Clarifies complex legal terms
 - **State law lookups**: Checks recording consent laws by state
 
-**Important**: The API never receives your location, personal data, or app usage patterns. It only gets the specific queries you choose to make.
+**Important**: The API never receives your personal data, or app usage patterns. It only gets the specific location and queries you choose to make.
 
 ---
 
