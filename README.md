@@ -1,7 +1,6 @@
 # 🔥 Firewatch
 ## Civil Rights Protection & Documentation App
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PWA](https://img.shields.io/badge/PWA-enabled-brightgreen.svg)](https://web.dev/progressive-web-apps/)
 [![Privacy First](https://img.shields.io/badge/Privacy-First-blue.svg)](#privacy--security)
 
