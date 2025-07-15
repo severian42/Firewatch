@@ -3,6 +3,7 @@
 
 [![PWA](https://img.shields.io/badge/PWA-enabled-brightgreen.svg)](https://web.dev/progressive-web-apps/)
 [![Privacy First](https://img.shields.io/badge/Privacy-First-blue.svg)](#privacy--security)
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N4XZ2TZ)
 
 **Firewatch** is a comprehensive civil rights protection application designed to help individuals document encounters, know their rights, and stay informed about local enforcement activities. Built with privacy-first principles, everything runs locally on your device.
 
