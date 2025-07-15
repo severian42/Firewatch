@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useUserSettings } from '../hooks/useUserSettings';
 import type { FallbackLocation, EmergencyContact } from '../types';
 import { TrashIcon } from '../components/Icons';
+import { GithubIcon } from '../components/Icons';
 
 const SettingsScreen: React.FC = () => {
   const { settings, saveSettings } = useUserSettings();
@@ -157,6 +158,23 @@ const SettingsScreen: React.FC = () => {
               </button>
             )}
           </div>
+        </div>
+        
+        {/* About/GitHub Link */}
+        <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <h2 className="text-xl font-semibold text-blue-400 mb-2">About</h2>
+          <p className="text-gray-400 text-sm mb-4">
+            Firewatch is an open-source project. You can find the source code on GitHub.
+          </p>
+          <a 
+            href="https://github.com/dhrkc/Firewatch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
+          >
+            <GithubIcon className="w-5 h-5" />
+            Firewatch GitHub Repository
+          </a>
         </div>
         
         <div className="flex justify-center items-center gap-4">
