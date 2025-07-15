@@ -6,6 +6,7 @@ import { resourceData } from '../data/resourceData';
 import { ShieldExclamationIcon } from '../components/Icons';
 import type { Alert, Screen, Evidence } from '../types';
 import DashboardToolkit from '../components/DashboardToolkit';
+import { useUserSettings } from '../hooks/useUserSettings';
 
 const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiveScreen: (screen: Screen) => void; }> = ({ onPanic, evidence, setActiveScreen }) => {
   const getThreatStatus = (alerts: Alert[]) => {
@@ -113,6 +114,9 @@ const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiv
     }
   };
 
+  const { settings } = useUserSettings();
+  const hasApiKey = !!settings.geminiApiKey;
+
   return (
     <div className="space-y-8">
       <div>
@@ -120,17 +124,18 @@ const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiv
         <p className="mt-1 text-gray-400">Quick access to emergency tools and status updates.</p>
       </div>
 
-      {/* Disclaimer for Mock Data - Homepage */}
-      <div className="bg-red-900 border border-red-700 text-red-100 px-6 py-4 rounded-lg text-center my-6 shadow-xl animate-pulse">
-        <p className="font-bold text-lg mb-2">🚨 Attention: Test Data Displayed! 🚨</p>
-        <p className="text-sm leading-relaxed">
-          Currently, you're viewing <span className="font-bold text-red-50">sample alerts</span> for demonstration purposes. These are not live, real-time incidents.
-          To ensure your safety and receive accurate, localized threat intelligence,
-          please <a href="/settings" className="underline font-bold text-red-50 hover:text-white transition-colors duration-200">securely configure your API key in Settings</a>.
-          Once set up, activate the <span className="font-bold text-red-50">Location Scanner</span> below to actively monitor your immediate area.
-          Your protection is our priority, and live data ensures you're truly informed.
-        </p>
-      </div>
+      {!hasApiKey && (
+        <div className="bg-red-900 border border-red-700 text-red-100 px-6 py-4 rounded-lg text-center my-6 shadow-xl animate-pulse">
+          <p className="font-bold text-lg mb-2">🚨 Attention: Test Data Displayed! 🚨</p>
+          <p className="text-sm leading-relaxed">
+            Currently, you're viewing <span className="font-bold text-red-50">sample alerts</span> for demonstration purposes. These are not live, real-time incidents.
+            To ensure your safety and receive accurate, localized threat intelligence,
+            please <a href="/settings" className="underline font-bold text-red-50 hover:text-white transition-colors duration-200">securely configure your API key in Settings</a>.
+            Once set up, activate the <span className="font-bold text-red-50">Location Scanner</span> below to actively monitor your immediate area.
+            Your protection is our priority, and live data ensures you're truly informed.
+          </p>
+        </div>
+      )}
 
       <div className="bg-gray-800 rounded-lg p-4 shadow-lg">
         <div className="grid grid-cols-2 gap-4">

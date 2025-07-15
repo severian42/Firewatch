@@ -6,6 +6,7 @@ import { generateNewAlert } from '../services/geminiService';
 import type { Alert } from '../types';
 import Spinner from '../components/Spinner';
 import LocationScanner from '../components/LocationScanner';
+import { useUserSettings } from '../hooks/useUserSettings';
 
 const AlertsScreen: React.FC = () => {
   const [alerts, setAlerts] = useState<Alert[]>(ALERT_DATA);
@@ -20,6 +21,9 @@ const AlertsScreen: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const { settings } = useUserSettings();
+  const hasApiKey = !!settings.geminiApiKey;
+
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
       <div>
@@ -29,17 +33,18 @@ const AlertsScreen: React.FC = () => {
         </p>
       </div>
 
-      {/* Disclaimer for Mock Data - Enhanced */}
-      <div className="bg-red-900 border border-red-700 text-red-100 px-6 py-4 rounded-lg text-center my-6 shadow-xl animate-pulse">
-        <p className="font-bold text-lg mb-2">🚨 Attention: Test Data Displayed! 🚨</p>
-        <p className="text-sm leading-relaxed">
-          Currently, you're viewing <span className="font-bold text-red-50">sample alerts</span> for demonstration purposes. These are not live, real-time incidents.
-          To ensure your safety and receive accurate, localized threat intelligence,
-          please <a href="/settings" className="underline font-bold text-red-50 hover:text-white transition-colors duration-200">securely configure your API key in Settings</a>.
-          Once set up, activate the <span className="font-bold text-red-50">Location Scanner</span> below to actively monitor your immediate area.
-          Your protection is our priority, and live data ensures you're truly informed.
-        </p>
-      </div>
+      {!hasApiKey && (
+        <div className="bg-red-900 border border-red-700 text-red-100 px-6 py-4 rounded-lg text-center my-6 shadow-xl animate-pulse">
+          <p className="font-bold text-lg mb-2">🚨 Attention: Test Data Displayed! 🚨</p>
+          <p className="text-sm leading-relaxed">
+            Currently, you're viewing <span className="font-bold text-red-50">sample alerts</span> for demonstration purposes. These are not live, real-time incidents.
+            To ensure your safety and receive accurate, localized threat intelligence,
+            please <a href="/settings" className="underline font-bold text-red-50 hover:text-white transition-colors duration-200">securely configure your API key in Settings</a>.
+            Once set up, activate the <span className="font-bold text-red-50">Location Scanner</span> below to actively monitor your immediate area.
+            Your protection is our priority, and live data ensures you're truly informed.
+          </p>
+        </div>
+      )}
 
       <div className="my-8">
         <LocationScanner />
