@@ -85,7 +85,7 @@ export const scanForLocalAlerts = async (location: Location | string): Promise<S
             ? `in or around ${location}`
             : `around latitude ${location.lat} and longitude ${location.lon}`;
         
-        const prompt = `Perform a search for recent events ${locationContext}. Scan for news articles, social media discussions, and official alerts posted in the last 48 hours. Focus on topics relevant to a civil rights protection app, such as: - Protests or demonstrations - Law enforcement activity (e.g., police checkpoints, ICE raids, increased patrols) - Community safety alerts - Reports of rights violations. Provide a concise summary of your findings. If there are no relevant events, state that the area appears clear based on available data.`;
+        const prompt = `Perform a comprehensive search for recent events and news ${locationContext}, covering the entire perimeter and larger area, not just the exact pinpoint spot. Scan diverse and useful web sources, including news articles, social media discussions, and official alerts posted in the last 72 hours. Focus on topics relevant to a civil rights protection app, such as: - Protests or demonstrations - Law enforcement activity (e.g., police checkpoints, ICE raids, increased patrols, arrests) - Community safety alerts and advisories - Reports of rights violations or civil liberties concerns - Activist alerts. Provide a concise summary of your findings, highlighting any specific actionable information. If there are no relevant events or notable activity, state that the area appears clear based on available data.`;
 
         const response: GenerateContentResponse = await ai.models.generateContent({
             model,

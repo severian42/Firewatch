@@ -96,8 +96,8 @@ const LocationScanner: React.FC = () => {
       <h2 className="text-xl font-semibold text-blue-400 mb-3">Live Area Scan</h2>
       <p className="text-gray-400 text-sm mb-4">
         {showManualInput 
-         ? 'Enter a location to search for recent civil rights related events and alerts.'
-         : 'Use our AI-powered scanner to search for recent civil rights related events in your vicinity.'
+         ? 'Enter a location to search for recent civil rights related events and alerts, covering the entire perimeter and larger area.'
+         : 'Use our AI-powered scanner to search for recent civil rights related events in your vicinity, covering the entire perimeter and larger area.'
         }
       </p>
       
