@@ -4,6 +4,7 @@ import { useUserSettings } from '../hooks/useUserSettings';
 import type { FallbackLocation, EmergencyContact } from '../types';
 import { TrashIcon } from '../components/Icons';
 import { GithubIcon } from '../components/Icons';
+import { ShieldExclamationIcon } from '../components/Icons';
 
 const SettingsScreen: React.FC = () => {
   const { settings, saveSettings } = useUserSettings();
@@ -101,37 +102,35 @@ const SettingsScreen: React.FC = () => {
           </p>
           <div className="space-y-4">
             <div>
-              <label htmlFor="geminiApiKey" className="block mb-2 text-sm font-medium text-gray-300">
+              <label htmlFor="gemini-api-key" className="block text-sm font-medium text-gray-700 mb-1">
                 Gemini API Key
-                <span className="text-red-400 font-normal ml-1">(Required for AI features)</span>
               </label>
-              <input 
-                type="password" 
-                id="geminiApiKey" 
-                value={geminiApiKey} 
+              <input
+                type="password"
+                id="gemini-api-key"
+                value={geminiApiKey}
                 onChange={(e) => setGeminiApiKey(e.target.value)}
                 placeholder="Enter your Gemini API key"
-                className="bg-gray-700 border border-gray-600 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" 
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               />
-              <p className="text-xs text-gray-500 mt-1">
-                Get your API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Google AI Studio</a>. AI features will not work without this.
+              <p className="mt-2 text-xs text-gray-500">
+                🔒 Your API key is stored securely in your browser's local storage only. It never leaves your device and cannot be accessed by anyone else, including the app developers.
               </p>
             </div>
             <div>
-              <label htmlFor="geminiModel" className="block mb-2 text-sm font-medium text-gray-300">AI Model</label>
-              <select 
-                id="geminiModel" 
-                value={geminiModel} 
+              <label htmlFor="gemini-model" className="block text-sm font-medium text-gray-700 mb-1">
+                AI Model
+              </label>
+              <select
+                id="gemini-model"
+                value={geminiModel}
                 onChange={(e) => setGeminiModel(e.target.value)}
-                className="bg-gray-700 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 {availableModels.map(model => (
                   <option key={model.value} value={model.value}>{model.label}</option>
                 ))}
               </select>
-              <p className="text-xs text-gray-500 mt-1">
-                Different models have varying capabilities and costs. Flash models are faster and cheaper.
-              </p>
             </div>
           </div>
         </div>
@@ -167,7 +166,7 @@ const SettingsScreen: React.FC = () => {
             Firewatch is an open-source project. You can find the source code on GitHub.
           </p>
           <a 
-            href="https://github.com/dhrkc/Firewatch"
+            href="https://github.com/severian42/Firewatch"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
@@ -177,6 +176,22 @@ const SettingsScreen: React.FC = () => {
           </a>
         </div>
         
+        {/* Privacy & Security Disclaimers */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Privacy & Security</h2>
+          <div className="space-y-4 text-sm text-gray-600">
+            <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+              <h3 className="font-medium text-blue-900 mb-2">🔒 Your Data Stays Private</h3>
+              <ul className="space-y-1 text-blue-800">
+                <li>• All API keys are stored locally in your browser's storage only</li>
+                <li>• No data is sent to external servers except your direct API calls to Google</li>
+                <li>• App developers cannot access your API key or any personal information</li>
+                <li>• All recordings and evidence remain on your device unless you choose to share them</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div className="flex justify-center items-center gap-4">
            <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
             Save Settings

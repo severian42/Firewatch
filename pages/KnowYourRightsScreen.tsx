@@ -4,20 +4,36 @@ import { RIGHTS_TOPICS_CONFIG, SCENARIO_SIMULATOR_MODULES_CONFIG } from '../cons
 import { rightsContent } from '../data/rightsContent';
 import FormattedContent from '../components/FormattedContent';
 import { ArrowLeftIcon } from '../components/Icons';
+import TrafficStopSimulation from '../components/simulations/TrafficStopSimulation';
+import WorkplaceRaidSimulation from '../components/simulations/WorkplaceRaidSimulation';
+import HomeVisitSimulation from '../components/simulations/HomeVisitSimulation';
+import RightsQuiz from '../components/simulations/RightsQuiz';
+
+type ViewType = 'topics' | 'content' | 'simulation';
 
 const KnowYourRightsScreen: React.FC = () => {
   const [selectedTopicId, setSelectedTopicId] = useState<string | null>(null);
+  const [currentView, setCurrentView] = useState<ViewType>('topics');
+  const [selectedSimulation, setSelectedSimulation] = useState<string | null>(null);
 
   const handleSelectTopic = (topicId: string) => {
     setSelectedTopicId(topicId);
+    setCurrentView('content');
   };
 
   const handleGoBack = () => {
     setSelectedTopicId(null);
+    setCurrentView('topics');
   };
-  
-  const handleSelectScenario = (title: string) => {
-    alert(`The "${title}" simulation will be implemented in a future update.`);
+
+  const handleSelectScenario = (simulationId: string) => {
+    setSelectedSimulation(simulationId);
+    setCurrentView('simulation');
+  };
+
+  const handleBackToSimulators = () => {
+    setSelectedSimulation(null);
+    setCurrentView('topics');
   };
 
   const content = useMemo(() => {
@@ -27,29 +43,46 @@ const KnowYourRightsScreen: React.FC = () => {
     return translatedContent || 'Could not find information for the selected topic.';
   }, [selectedTopicId]);
 
+  const renderSimulation = () => {
+    switch (selectedSimulation) {
+      case 'traffic_stop_sim':
+        return <TrafficStopSimulation onBack={handleBackToSimulators} />;
+      case 'workplace_raid_sim':
+        return <WorkplaceRaidSimulation onBack={handleBackToSimulators} />;
+      case 'home_visit_sim':
+        return <HomeVisitSimulation onBack={handleBackToSimulators} />;
+      case 'rights_quiz':
+        return <RightsQuiz onBack={handleBackToSimulators} />;
+      default:
+        return null;
+    }
+  };
+
   const TopicSelection = () => (
-    <div className="space-y-12">
-      <div>
-        <h1 className="text-4xl font-bold text-center text-blue-400">Know Your Rights</h1>
-        <p className="mt-4 text-lg text-center text-gray-300">
-          Select a scenario to learn about your constitutional protections.
+    <div>
+      <h1 className="text-4xl font-bold text-center text-blue-300 mb-8">Know Your Rights</h1>
+      
+      <div className="mb-12">
+        <h2 className="text-3xl font-bold text-center text-purple-400 mb-6">Educational Topics</h2>
+        <p className="text-lg text-center text-gray-300 mb-8">
+          Learn about your rights in different situations
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {RIGHTS_TOPICS_CONFIG.map((topic) => (
             <button
               key={topic.id}
               onClick={() => handleSelectTopic(topic.id)}
-              className="bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg p-6 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1"
+              className="bg-indigo-900/50 hover:bg-indigo-800/60 text-gray-200 rounded-lg p-6 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-indigo-700"
             >
               <div className="flex items-center">
-                <span className="text-4xl mr-4" aria-hidden="true">{topic.icon}</span>
-                <span className="text-xl font-semibold text-left">{topic.title}</span>
+                <div className="text-purple-400 mr-4 flex-shrink-0">{topic.icon}</div>
+                <span className="text-lg font-semibold text-left">{topic.title}</span>
               </div>
             </button>
           ))}
         </div>
       </div>
-      
+
       <div>
         <h2 className="text-3xl font-bold text-center text-purple-400">Scenario Simulator</h2>
          <p className="mt-4 text-lg text-center text-gray-300">
@@ -59,7 +92,7 @@ const KnowYourRightsScreen: React.FC = () => {
           {SCENARIO_SIMULATOR_MODULES_CONFIG.map((module) => (
             <button
               key={module.id}
-              onClick={() => handleSelectScenario(module.title)}
+              onClick={() => handleSelectScenario(module.id)}
               className="bg-indigo-900/50 hover:bg-indigo-800/60 text-gray-200 rounded-lg p-6 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 border border-indigo-700"
             >
               <div className="flex items-center">
@@ -96,7 +129,9 @@ const KnowYourRightsScreen: React.FC = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      {selectedTopicId ? <ContentView /> : <TopicSelection />}
+      {currentView === 'topics' && <TopicSelection />}
+      {currentView === 'content' && <ContentView />}
+      {currentView === 'simulation' && renderSimulation()}
     </div>
   );
 };

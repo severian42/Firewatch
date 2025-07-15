@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react';
 import { KEY_PHRASES, INCIDENT_CHECKLIST_ITEMS } from '../constants';
 import { getRecordingLaw, explainLegalTerm } from '../services/geminiService';
 import type { RecordingLawResult, JargonBusterResult, ChecklistItem } from '../types';
-import { ChatBubbleBottomCenterTextIcon, ClipboardDocumentListIcon, BookOpenIcon, MapIcon, CheckBadgeIcon } from './Icons';
+import { ChatBubbleBottomCenterTextIcon, ClipboardDocumentListIcon, BookOpenIcon, MapIcon, CheckBadgeIcon, ShieldExclamationIcon } from './Icons';
 import Spinner from './Spinner';
 
 const ChecklistModal: React.FC<{onClose: () => void}> = ({ onClose }) => {
@@ -32,6 +32,77 @@ const ChecklistModal: React.FC<{onClose: () => void}> = ({ onClose }) => {
                     </ul>
                 </div>
                 <button onClick={onClose} className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    );
+};
+
+const EmergencyResourcesModal: React.FC<{onClose: () => void}> = ({ onClose }) => {
+    const emergencyNumbers = [
+        { name: "Emergency Services", number: "911" },
+        { name: "ACLU National", number: "1-212-549-2500" },
+        { name: "National Lawyers Guild", number: "1-212-679-5100" },
+        { name: "Immigration Hotline", number: "1-844-363-1423" },
+        { name: "Bail Fund Network", number: "1-800-898-0692" }
+    ];
+
+    return (
+        <div className="fixed inset-0 z-50 bg-gray-900/80 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
+            <div className="bg-gray-800 rounded-lg shadow-2xl p-6 w-full max-w-md max-h-[90vh] flex flex-col" onClick={e => e.stopPropagation()}>
+                <h2 className="text-2xl font-bold text-red-400 mb-4">Emergency Resources</h2>
+                <div className="flex-1 overflow-y-auto pr-2">
+                    <div className="space-y-4">
+                        <div>
+                            <h3 className="text-lg font-semibold text-blue-400 mb-2">Quick Actions</h3>
+                            <button 
+                                onClick={() => window.open('tel:911')}
+                                className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg mb-2"
+                            >
+                                🚨 Call 911
+                            </button>
+                            <button 
+                                onClick={() => window.open('sms:?&body=Emergency! I need help. My location: [GPS will be attached]')}
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg"
+                            >
+                                📱 Text Emergency Contacts
+                            </button>
+                        </div>
+                        
+                        <div>
+                            <h3 className="text-lg font-semibold text-blue-400 mb-2">Legal Hotlines</h3>
+                            {emergencyNumbers.map((item, index) => (
+                                <div key={index} className="flex justify-between items-center p-3 bg-gray-700 rounded-lg mb-2">
+                                    <div>
+                                        <p className="font-semibold text-white">{item.name}</p>
+                                        <p className="text-sm text-gray-300">{item.number}</p>
+                                    </div>
+                                    <button 
+                                        onClick={() => window.open(`tel:${item.number}`)}
+                                        className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded text-sm"
+                                    >
+                                        Call
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div>
+                            <h3 className="text-lg font-semibold text-blue-400 mb-2">Your Rights Card</h3>
+                            <div className="bg-gray-700 p-4 rounded-lg">
+                                <p className="text-sm text-gray-200 mb-2">📋 Keep this info ready:</p>
+                                <ul className="text-xs text-gray-300 space-y-1">
+                                    <li>• Right to remain silent</li>
+                                    <li>• Right to refuse searches</li>
+                                    <li>• Right to attorney</li>
+                                    <li>• Right to record police</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button onClick={onClose} className="mt-6 w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">
                     Close
                 </button>
             </div>
@@ -105,10 +176,12 @@ const DashboardToolkit: React.FC = () => {
         setIsBusting(false);
     }, [termInput]);
 
+    const [isEmergencyResourcesVisible, setIsEmergencyResourcesVisible] = useState(false);
 
     return (
         <div className="bg-gray-800 rounded-lg p-4 shadow-lg">
             {isChecklistVisible && <ChecklistModal onClose={() => setIsChecklistVisible(false)} />}
+            {isEmergencyResourcesVisible && <EmergencyResourcesModal onClose={() => setIsEmergencyResourcesVisible(false)} />}
             <h2 className="text-lg font-semibold text-purple-400 mb-4">Dashboard Toolkit</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Know Your Script */}
@@ -186,6 +259,22 @@ const DashboardToolkit: React.FC = () => {
                             </form>
                          )
                      )}
+                </div>
+
+                {/* Emergency Resources */}
+                <div className="bg-gray-700/50 p-4 rounded-lg flex flex-col h-56 justify-between cursor-pointer hover:bg-gray-700/80 transition-colors" onClick={() => setIsEmergencyResourcesVisible(true)}>
+                    <div>
+                        <div className="flex items-center gap-3 text-red-300 mb-3">
+                            <ShieldExclamationIcon className="w-7 h-7" />
+                            <h3 className="font-bold">Emergency Resources</h3>
+                        </div>
+                        <p className="text-sm text-gray-300">Quick access to legal hotlines, emergency contacts, and your rights.</p>
+                    </div>
+                    <div className="text-center mt-4">
+                        <span className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors">
+                            Get Help Now
+                        </span>
+                    </div>
                 </div>
 
             </div>

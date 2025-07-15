@@ -9,6 +9,17 @@ export default defineConfig(({ mode }) => {
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
       },
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom'],
+              'pwa-vendor': ['workbox-window'],
+              'pages': ['./pages/HomeScreen', './pages/AlertsScreen', './pages/GuideScreen', './pages/DocumentScreen', './pages/KnowYourRightsScreen', './pages/ResourcesScreen', './pages/SettingsScreen'],
+            },
+          },
+        },
+      },
       plugins: [
         VitePWA({
           registerType: 'autoUpdate',

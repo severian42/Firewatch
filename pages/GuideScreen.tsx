@@ -1,20 +1,18 @@
 
 import React, { useState } from 'react';
-import { resourceData } from '../data/resourceData';
+import { enhancedResources } from '../data/resourceData';
 import { documentationContent } from '../data/documentationContent';
-import { ChevronDownIcon, ArrowLeftIcon, InformationCircleIcon } from '../components/Icons';
+import { ChevronDownIcon, ArrowLeftIcon, InformationCircleIcon, PhoneIcon, GlobeAltIcon, LifebuoyIcon } from '../components/Icons';
 import FormattedContent from '../components/FormattedContent';
 import type { ResourceCategory } from '../types';
 
 const GuideScreen: React.FC = () => {
-  const [view, setView] = useState<'index' | 'docs'>('index');
+  const [view, setView] = useState<'index' | 'docs' | 'resources'>('index');
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   const toggleAccordion = (id: string) => {
     setOpenAccordion(openAccordion === id ? null : id);
   };
-  
-  const currentResourceData: ResourceCategory[] = resourceData;
 
   if (view === 'docs') {
     return (
@@ -33,98 +31,77 @@ const GuideScreen: React.FC = () => {
     );
   }
 
+  if (view === 'resources') {
   return (
-    <div className="space-y-8 max-w-4xl mx-auto">
-      <div>
-        <h1 className="text-4xl font-bold text-center text-blue-400">Guide & Resources</h1>
-        <p className="mt-4 text-lg text-center text-gray-300">
-          Your guide to the app and external support organizations.
-        </p>
-      </div>
-      
-      <div className="space-y-4">
-        {/* App Documentation Card */}
-        <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg border border-purple-600/50">
+      <div className="max-w-4xl mx-auto">
            <button
-              onClick={() => setView('docs')}
-              className="w-full flex justify-between items-center p-5 text-left transition-colors bg-purple-900/30 hover:bg-purple-800/40 focus:outline-none focus:ring-2 focus:ring-purple-500"
-            >
-              <div className="flex items-center">
-                <InformationCircleIcon className="w-10 h-10 text-purple-400 mr-4 flex-shrink-0" />
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-100">App User Guide</h2>
-                  <p className="text-sm text-gray-400 mt-1">Learn how to use all features of the Firewatch app.</p>
-                </div>
-              </div>
-               <svg className="w-5 h-5 text-gray-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-              </svg>
+          onClick={() => setView('index')} 
+          className="flex items-center gap-2 mb-6 text-blue-400 hover:text-blue-300 transition-colors font-semibold"
+        >
+          <ArrowLeftIcon />
+          Back to Guide
             </button>
-        </div>
-
-        {/* External Resources */}
-        {currentResourceData.map((category) => (
-          <div key={category.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
-            <button
-              onClick={() => toggleAccordion(category.id)}
-              className="w-full flex justify-between items-center p-5 text-left transition-colors hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              aria-expanded={openAccordion === category.id}
-              aria-controls={`resources-${category.id}`}
-            >
-              <div className="flex items-center">
-                <span className="text-3xl mr-4" aria-hidden="true">{category.icon}</span>
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-100">{category.title}</h2>
-                  <p className="text-sm text-gray-400 mt-1 hidden sm:block">{category.description}</p>
-                </div>
-              </div>
-              <ChevronDownIcon
-                className={`w-6 h-6 text-gray-400 transition-transform duration-300 flex-shrink-0 ml-4 ${
-                  openAccordion === category.id ? 'transform rotate-180' : ''
-                }`}
-              />
-            </button>
-            <div
-              id={`resources-${category.id}`}
-              className={`transition-all duration-500 ease-in-out ${
-                openAccordion === category.id ? 'max-h-[1000px]' : 'max-h-0'
-              }`}
-            >
-              <div className={`p-5 border-t border-gray-700 ${openAccordion !== category.id && 'hidden'}`}>
-                <ul className="space-y-4">
-                  {category.resources.map((resource) => (
-                    <li key={resource.name} className="bg-gray-900 p-4 rounded-lg shadow-inner">
-                      <h3 className="font-bold text-lg text-blue-300">{resource.name}</h3>
-                      <p className="mt-2 text-gray-300 leading-relaxed">{resource.description}</p>
-                      <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-                        {resource.website && (
-                          <a
-                            href={resource.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-green-400 hover:text-green-300 transition-colors font-medium"
-                          >
-                            Website
-                            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+        <div className="space-y-6">
+          {enhancedResources.map((category) => (
+            <div key={category.category} className="bg-gray-800 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-blue-400 mb-4">{category.category}</h3>
+              <div className="space-y-4">
+                {category.items.map((item: ResourceCategory['items'][0], index) => (
+                  <div key={index} className="bg-gray-700 p-4 rounded-lg">
+                    <h4 className="font-semibold text-white">{item.name}</h4>
+                    <p className="text-sm text-gray-300 mb-2">{item.description}</p>
+                    {item.phone && (
+                      <a href={`tel:${item.phone}`} className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm mr-4">
+                        <PhoneIcon className="w-4 h-4" />
+                        {item.phone}
                           </a>
                         )}
-                        {resource.phone && (
-                          <a
-                            href={`tel:${resource.phone}`}
-                            className="inline-flex items-center text-purple-400 hover:text-purple-300 transition-colors font-medium"
-                          >
-                             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            {resource.phone}
+                    {item.website && (
+                      <a href={`https://${item.website}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 text-sm">
+                        <GlobeAltIcon className="w-4 h-4" />
+                        {item.website}
                           </a>
                         )}
                       </div>
-                    </li>
                   ))}
-                </ul>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      <h1 className="text-3xl font-bold text-gray-100 mb-8">Firewatch Guide & Resources</h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <button
+          onClick={() => setView('docs')}
+          className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors text-left"
+        >
+          <InformationCircleIcon className="w-12 h-12 text-blue-400 mb-4" />
+          <h2 className="text-xl font-bold text-white mb-2">App Documentation</h2>
+          <p className="text-gray-400">Complete guide to all Firewatch features and how to use them effectively.</p>
+        </button>
+
+        <button
+          onClick={() => setView('resources')}
+          className="bg-gray-800 p-6 rounded-lg hover:bg-gray-700 transition-colors text-left"
+        >
+          <LifebuoyIcon className="w-12 h-12 text-green-400 mb-4" />
+          <h2 className="text-xl font-bold text-white mb-2">Emergency Resources</h2>
+          <p className="text-gray-400">Legal hotlines, support organizations, and emergency contacts.</p>
+        </button>
           </div>
-        ))}
+
+      <div className="mt-8 bg-gray-800 rounded-lg p-6">
+        <h3 className="text-xl font-bold text-yellow-400 mb-4">⚠️ Important Legal Notice</h3>
+        <p className="text-gray-300">
+          This app provides information and tools for educational purposes. It is not a substitute for professional legal advice. 
+          Always consult with a qualified attorney for legal matters. Laws vary by jurisdiction and may change over time.
+        </p>
       </div>
     </div>
   );

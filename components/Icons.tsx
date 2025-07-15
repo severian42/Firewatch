@@ -17,8 +17,10 @@ export const DocumentTextIcon: React.FC = () => (
   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
 );
 
-export const LifebuoyIcon: React.FC = () => (
-  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+export const LifebuoyIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-2.36-2.36l-4.138 3.448m0 0a9.027 9.027 0 01-1.652-1.306c-.51-.51-.944-1.064-1.306-1.652m0 0l3.448-4.138m0 0a9.014 9.014 0 019.424 0M4.33 16.712l4.138-3.448m0 0a9.014 9.014 0 010-9.424" />
+  </svg>
 );
 
 export const Cog6ToothIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6' }) => (
@@ -52,9 +54,9 @@ export const VideoCameraIcon: React.FC<{ className?: string }> = ({ className = 
     </svg>
 );
 
-export const PhoneIcon: React.FC = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+export const PhoneIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
     </svg>
 );
 
@@ -88,6 +90,18 @@ export const ChevronDownIcon: React.FC<{ className?: string }> = ({ className = 
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
     </svg>
+);
+
+export const ChevronRightIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+  </svg>
+);
+
+export const ChevronLeftIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className={className}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+  </svg>
 );
 
 export const MapIcon: React.FC<{ className?: string }> = ({ className = "w-6 h-6" }) => (
@@ -168,5 +182,11 @@ export const InformationCircleIcon: React.FC<{ className?: string }> = ({ classN
 export const GithubIcon: React.FC<{ className?: string }> = ({ className = 'w-6 h-6' }) => (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 24 24" fill="currentColor">
       <path fillRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.254 2.729 7.89 6.536 9.167.48.089.654-.208.654-.46V19.03c-2.718.592-3.295-1.246-3.295-1.246-.444-1.127-1.085-1.428-1.085-1.428-.887-.604.068-.592.068-.592.98.07 1.496.994 1.496.994.87 1.494 2.285 1.063 2.838.812.088-.631.341-1.064.62-1.309-2.169-.245-4.44-1.084-4.44-4.834 0-1.064.38-1.93.996-2.613-.1-.247-.43-1.238.096-2.583 0 0 .81-.26 2.64.996.775-.215 1.603-.323 2.427-.323.824 0 1.652.108 2.427.323 1.83-1.256 2.64-.996 2.64-.996.526 1.345.195 2.336.096 2.583.617.683.996 1.549.996 2.613 0 3.76-2.274 4.583-4.448 4.825.347.298.653.882.653 1.776v2.632c0 .256.17.553.658.455C20.274 19.89 23 16.257 23 12c0-5.523-4.477-10-10-10z" clipRule="evenodd" />
+    </svg>
+);
+
+export const GlobeAltIcon = ({ className = "w-6 h-6" }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
     </svg>
 );

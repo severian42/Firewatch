@@ -1,69 +1,32 @@
 
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface FormattedContentProps {
   content: string;
 }
 
 const FormattedContent: React.FC<FormattedContentProps> = ({ content }) => {
-  const renderLine = (line: string, index: number) => {
-    line = line.trim();
-
-    if (line.startsWith('# ')) {
-      return (
-        <h1 key={index} className="text-3xl font-bold mt-6 mb-4 pb-2 border-b border-gray-600 text-blue-300">
-          {line.substring(2)}
-        </h1>
-      );
-    }
-    if (line.startsWith('## ')) {
-      return (
-        <h2 key={index} className="text-2xl font-semibold mt-6 mb-3 text-blue-400">
-          {line.substring(3)}
-        </h2>
-      );
-    }
-    if (line.startsWith('* ')) {
-      return (
-        <li key={index} className="ml-6 my-2 list-disc list-outside text-gray-300">
-          {line.substring(2)}
-        </li>
-      );
-    }
-    if (line.length > 0) {
-      // Handle bold text with **text**
-      const parts = line.split('**');
-      const formattedLine = parts.map((part, i) =>
-        i % 2 === 1 ? <strong key={i} className="font-bold text-gray-100">{part}</strong> : part
-      );
-      return <p key={index} className="my-3 leading-relaxed text-gray-300">{formattedLine}</p>;
-    }
-    return null;
-  };
-
-  const lines = content.split('\n').filter(line => line.trim().length > 0);
-  
-  // Group list items together
-  const elements = [];
-  let currentList: string[] = [];
-
-  lines.forEach((line, index) => {
-    if (line.startsWith('* ')) {
-      currentList.push(line);
-    } else {
-      if (currentList.length > 0) {
-        elements.push(<ul key={`ul-${index-1}`} className="space-y-1">{currentList.map((item, i) => renderLine(item, i))}</ul>);
-        currentList = [];
-      }
-      elements.push(renderLine(line, index));
-    }
-  });
-
-  if (currentList.length > 0) {
-     elements.push(<ul key={`ul-last`} className="space-y-1">{currentList.map((item, i) => renderLine(item, i))}</ul>);
-  }
-
-  return <div className="prose prose-invert max-w-none">{elements}</div>;
+  return (
+    <div className="prose prose-invert prose-blue max-w-none">
+      <ReactMarkdown 
+        remarkPlugins={[remarkGfm]}
+        components={{
+          h1: ({ children }) => <h1 className="text-3xl font-bold mt-6 mb-4 pb-2 border-b border-gray-600 text-blue-300">{children}</h1>,
+          h2: ({ children }) => <h2 className="text-2xl font-semibold mt-6 mb-3 text-blue-400">{children}</h2>,
+          h3: ({ children }) => <h3 className="text-xl font-semibold mt-4 mb-2 text-gray-100">{children}</h3>,
+          p: ({ children }) => <p className="my-3 leading-relaxed text-gray-300">{children}</p>,
+          ul: ({ children }) => <ul className="my-3 ml-6 space-y-2">{children}</ul>,
+          li: ({ children }) => <li className="text-gray-300">{children}</li>,
+          strong: ({ children }) => <strong className="font-bold text-gray-100">{children}</strong>,
+          em: ({ children }) => <em className="italic text-gray-200">{children}</em>,
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
+  );
 };
 
 export default FormattedContent;

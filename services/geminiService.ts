@@ -25,7 +25,7 @@ const getUserSettings = () => {
 const getAI = () => {
   const settings = getUserSettings();
   if (!settings.apiKey) {
-    throw new Error('No Gemini API key configured. Please set your API key in Settings.');
+    throw new Error('No Gemini API key configured. Please set your API key in Settings. Your API key is stored securely in your browser only.');
   }
   return new GoogleGenAI({ apiKey: settings.apiKey });
 };

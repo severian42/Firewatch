@@ -1,182 +1,123 @@
 
-import React, { useMemo } from 'react';
-import { HOME_SCREEN_ACTIONS } from '../constants';
-import { ALERT_DATA } from '../data/alertData';
-import { resourceData } from '../data/resourceData';
-import { ShieldExclamationIcon } from '../components/Icons';
-import type { Alert, Screen, Evidence } from '../types';
+
+import React from 'react';
 import DashboardToolkit from '../components/DashboardToolkit';
-import { useUserSettings } from '../hooks/useUserSettings';
+import EvidenceListItem from '../components/EvidenceListItem';
+import { useEvidence } from '../hooks/useEvidence';
+import type { Screen } from '../types';
 
-const HomeScreen: React.FC<{ onPanic: () => void; evidence: Evidence[]; setActiveScreen: (screen: Screen) => void; }> = ({ onPanic, evidence, setActiveScreen }) => {
-  const getThreatStatus = (alerts: Alert[]) => {
-    const criticalAlerts = alerts.filter(a => a.type !== 'All Clear');
-    if (criticalAlerts.length === 0) {
-      return {
-        level: 'Green',
-        label: 'Low Threat',
-        message: 'No active threats reported.',
-        color: 'text-green-400',
-        bgColor: 'bg-green-500',
-      };
-    }
-  
-    const highestPriorityAlert = criticalAlerts.sort((a, b) => {
-        const priority: { [key: string]: number } = { 'Immediate Threat': 3, 'Area Watch': 2, 'Pattern Alert': 1 };
-        return (priority[b.type] || 0) - (priority[a.type] || 0);
-    })[0];
-  
-    if (highestPriorityAlert.type === 'Immediate Threat') {
-      return {
-        level: 'Red',
-        label: 'High Threat',
-        message: highestPriorityAlert.title,
-        color: 'text-red-400',
-        bgColor: 'bg-red-500',
-      };
-    }
-    
-    return {
-      level: 'Yellow',
-      label: 'Elevated Threat',
-      message: highestPriorityAlert.title,
-      color: 'text-yellow-400',
-      bgColor: 'bg-yellow-500',
-    };
-  };
+interface HomeScreenProps {
+  setActiveScreen: (screen: Screen) => void;
+}
 
-  const threatStatus = useMemo(() => getThreatStatus(ALERT_DATA), []);
-
-  const handleActionClick = (actionId: string) => {
-    switch (actionId) {
-      case 'quick_record':
-        setActiveScreen('Document');
-        break;
-
-      case 'legal_hotline':
-        const legalOrgs = resourceData.find(cat => cat.id === 'legal_orgs');
-        const aclu = legalOrgs?.resources.find(res => res.name.includes('ACLU'));
-
-        if (aclu) {
-          const hotline = aclu.phone?.replace(/\D/g, '');
-
-          if (hotline) {
-            if (confirm(`You are about to call ${aclu.name} (${aclu.phone}). Do you want to proceed?`)) {
-              window.location.href = `tel:${hotline}`;
-            }
-          } else {
-            alert('Legal hotline number not found.');
-          }
-        } else {
-          alert('ACLU resource not found.');
-        }
-        break;
-
-      case 'share_location':
-        if (!navigator.geolocation) {
-          alert('Geolocation is not supported by your browser.');
-          return;
-        }
-        
-        alert('Getting your location to share...');
-
-        navigator.geolocation.getCurrentPosition(
-            async (position) => {
-                const { latitude, longitude } = position.coords;
-                const mapsLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
-                const shareText = `I'm sharing my current location with you via the Firewatch app. You can view it here: ${mapsLink}`;
-
-                if (navigator.share) {
-                    try {
-                        await navigator.share({
-                            title: 'My Location',
-                            text: shareText,
-                        });
-                    } catch (error) {
-                        console.log('Share was cancelled.', error);
-                    }
-                } else {
-                    alert('Your browser does not support native sharing. We will open your SMS app as a fallback.');
-                    window.location.href = `sms:?&body=${encodeURIComponent(shareText)}`;
-                }
-            },
-            (error) => {
-                console.error("Geolocation error:", error);
-                let message = "Could not get your location. Please check your browser's location permissions.";
-                if (error.code === error.TIMEOUT) {
-                    message = 'Could not get your location in time. Please try again.';
-                }
-                alert(message);
-            },
-            { timeout: 10000, enableHighAccuracy: true }
-        );
-        break;
-    }
-  };
-
-  const { settings } = useUserSettings();
-  const hasApiKey = !!settings.geminiApiKey;
+const HomeScreen: React.FC<HomeScreenProps> = ({ setActiveScreen }) => {
+  const { evidence } = useEvidence();
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold text-gray-100">Dashboard</h1>
-        <p className="mt-1 text-gray-400">Quick access to emergency tools and status updates.</p>
-      </div>
-
-      {!hasApiKey && (
-        <div className="bg-red-900 border border-red-700 text-red-100 px-6 py-4 rounded-lg text-center my-6 shadow-xl animate-pulse">
-          <p className="font-bold text-lg mb-2">🚨 Attention: Test Data Displayed! 🚨</p>
-          <p className="text-sm leading-relaxed">
-            Currently, you're viewing <span className="font-bold text-red-50">sample alerts</span> for demonstration purposes. These are not live, real-time incidents.
-            To ensure your safety and receive accurate, localized threat intelligence,
-            please <a href="/settings" className="underline font-bold text-red-50 hover:text-white transition-colors duration-200">securely configure your API key in Settings</a>.
-            Once set up, activate the <span className="font-bold text-red-50">Location Scanner</span> below to actively monitor your immediate area.
-            Your protection is our priority, and live data ensures you're truly informed.
+    <div className="bg-gray-900">
+      
+      <div className="max-w-6xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+              <h1 className="text-2xl font-bold text-gray-800 mb-4">Welcome to Firewatch</h1>
+              <p className="text-gray-600 mb-4">
+                Your civil rights protection companion. Document, report, and stay informed.
           </p>
-        </div>
-      )}
-
-      <div className="bg-gray-800 rounded-lg p-4 shadow-lg">
+              
         <div className="grid grid-cols-2 gap-4">
-          <button
-            onClick={onPanic}
-            className="col-span-2 bg-red-600 hover:bg-red-700 text-white rounded-lg p-4 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 flex flex-col items-center justify-center h-28"
-            aria-label="Activate Emergency Panic Button"
-          >
-            <ShieldExclamationIcon className="w-10 h-10" />
-            <span className="text-xl font-bold mt-1 tracking-wider">PANIC</span>
-          </button>
-          {HOME_SCREEN_ACTIONS.map(action => (
-            <button
-              key={action.id}
-              onClick={() => handleActionClick(action.id)}
-              className={`${action.className} text-white rounded-lg p-3 shadow-md transition-all duration-200 ease-in-out transform hover:scale-105 flex flex-col items-center justify-center h-24`}
-              aria-label={action.label}
-            >
-              <div className="w-8 h-8">{action.icon}</div>
-              <span className="text-sm font-semibold mt-2 text-center">{action.label}</span>
-            </button>
-          ))}
+                <button 
+                  onClick={() => setActiveScreen('Rights')}
+                  className="bg-red-50 p-4 rounded-lg hover:bg-red-100 transition-colors cursor-pointer text-left"
+                >
+                  <h3 className="font-semibold text-gray-800">Know Your Rights</h3>
+                  <p className="text-sm text-gray-600">Quick access to your legal protections</p>
+                </button>
+                <button 
+                  onClick={() => setActiveScreen('Document')}
+                  className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer text-left"
+                >
+                  <h3 className="font-semibold text-gray-800">Document Safely</h3>
+                  <p className="text-sm text-gray-600">Secure recording with legal guidance</p>
+                </button>
         </div>
       </div>
 
       <div className="bg-gray-800 rounded-lg p-4 shadow-lg">
         <h2 className="text-lg font-semibold text-blue-400 mb-3">Area Status</h2>
         <div className="space-y-3">
-            <div className={`p-3 rounded-lg bg-gray-900/50 border-l-4 ${threatStatus.bgColor.replace('bg-','border-')}`}>
+                <div className="p-3 rounded-lg bg-gray-900/50 border-l-4 border-gray-500">
                 <div className="flex items-center justify-between">
-                    <span className={`font-bold text-lg ${threatStatus.color}`}>{threatStatus.label}</span>
-                    <span className={`px-2 py-1 text-xs font-bold text-gray-900 rounded-full ${threatStatus.bgColor}`}>{threatStatus.level}</span>
+                    <span className="font-bold text-lg text-gray-400">READY</span>
+                    <span className="px-2 py-1 text-xs font-bold text-gray-900 rounded-full bg-gray-500">STANDBY</span>
+                  </div>
+                  <p className="text-sm text-gray-300 mt-1">System ready. Use tools below to scan your area.</p>
                 </div>
-                <p className="text-sm text-gray-300 mt-1">{threatStatus.message}</p>
+                <p className="text-xs text-gray-500 text-center pt-2">Status updates when you scan your location</p>
+              </div>
             </div>
-            <p className="text-xs text-gray-500 text-center pt-2">Status is based on community reports and may not be comprehensive.</p>
+          </div>
+
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-lg shadow-md p-4">
+              <h2 className="text-lg font-semibold mb-3 text-gray-800">
+                Active Alerts
+              </h2>
+              <div className="space-y-3">
+                <div className="border-l-4 border-gray-300 pl-3">
+                  <h3 className="font-medium text-sm text-gray-800">No active alerts</h3>
+                  <p className="text-xs text-gray-600">Scan your area to check for updates</p>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
 
       <DashboardToolkit />
 
+        {/* Community Safety Map Section */}
+        <div className="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+          <div className="p-4 border-b border-gray-200">
+            <div className="flex items-center space-x-2">
+              <h2 className="text-lg font-semibold text-gray-800">Community Safety Map</h2>
+            </div>
+            <p className="text-sm text-gray-600 mt-1">
+              Real-time community reports and safety information from our partners
+            </p>
+          </div>
+          <div className="relative">
+            <iframe
+              src="https://padlet.com/embed/lf0l47ljszbto2uj"
+              className="w-full h-[600px] md:h-[700px] lg:h-[800px]"
+              style={{ border: 'none', display: 'block' }}
+              allow="camera;microphone;geolocation"
+              title="Community Safety Map"
+            />
+          </div>
+          <div className="p-3 bg-gray-50 border-t border-gray-200">
+            <p className="text-xs text-gray-500">
+              🔒 This map is embedded from an external service. Your location and data remain private to your device.
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-lg font-semibold mb-4 text-gray-800">
+            Recent Evidence
+          </h2>
+          {evidence.length > 0 ? (
+            <div className="space-y-3">
+              {evidence.slice(0, 3).map(item => (
+                <EvidenceListItem key={item.id} evidence={item} onSelect={() => {}} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-500 text-center py-8">
+              No evidence recorded yet. Use the camera to start documenting.
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
