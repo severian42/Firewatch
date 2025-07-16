@@ -139,9 +139,9 @@ const App: React.FC = () => {
       />
       <footer className="w-full py-2 text-center text-gray-500 text-xs">
         <div className="flex justify-center items-center gap-4">
-          <a href="https://github.com/severian42/Firewatch" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
-            GitHub
-          </a>
+        <a href="https://github.com/severian42/Firewatch" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
+          GitHub
+        </a>
           <span className="text-gray-600">•</span>
           <a href="https://www.interwoven-arkitech.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">
             Built with AI by Interwoven Arkitech

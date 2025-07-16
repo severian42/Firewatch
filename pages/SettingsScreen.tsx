@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useUserSettings } from '../hooks/useUserSettings';
 import type { FallbackLocation, EmergencyContact } from '../types';
 import { TrashIcon } from '../components/Icons';
@@ -13,28 +13,6 @@ const SettingsScreen: React.FC = () => {
   const [geminiApiKey, setGeminiApiKey] = useState<string>(settings.geminiApiKey || '');
   const [geminiModel, setGeminiModel] = useState<string>(settings.geminiModel || 'gemini-2.0-flash-exp');
   const [savedMessage, setSavedMessage] = useState<string>('');
-
-  // Load Ko-fi widget
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://storage.ko-fi.com/cdn/widget/Widget_2.js';
-    script.async = true;
-    script.onload = () => {
-      // Initialize Ko-fi widget after script loads
-      if ((window as any).kofiwidget2) {
-        (window as any).kofiwidget2.init('Support me on Ko-fi', '#570300', 'N4N4XZ2TZ');
-        (window as any).kofiwidget2.draw();
-      }
-    };
-    document.head.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
 
   const availableModels = [
     { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
@@ -188,15 +166,15 @@ const SettingsScreen: React.FC = () => {
             Firewatch is an open-source project. You can find the source code on GitHub.
           </p>
           <div className="space-y-3">
-            <a 
-              href="https://github.com/severian42/Firewatch"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
-            >
-              <GithubIcon className="w-5 h-5" />
-              Firewatch GitHub Repository
-            </a>
+          <a 
+            href="https://github.com/severian42/Firewatch"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 flex items-center gap-2"
+          >
+            <GithubIcon className="w-5 h-5" />
+            Firewatch GitHub Repository
+          </a>
             <div className="text-gray-500 text-sm">
               <p>
                 Developed with AI assistance by{' '}
@@ -235,13 +213,6 @@ const SettingsScreen: React.FC = () => {
             Save Settings
           </button>
           {savedMessage && <p className="text-green-400 transition-opacity duration-300">{savedMessage}</p>}
-        </div>
-
-        {/* Ko-fi Support Widget */}
-        <div className="flex justify-center pt-8 border-t border-gray-700">
-          <div id="kofi-widget-container">
-            {/* Ko-fi widget will be rendered here */}
-          </div>
         </div>
       </form>
     </div>
