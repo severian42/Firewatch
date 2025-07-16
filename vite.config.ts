@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => {
             manualChunks: {
               'react-vendor': ['react', 'react-dom'],
               'pwa-vendor': ['workbox-window'],
-              'pages': ['./pages/HomeScreen', './pages/AlertsScreen', './pages/GuideScreen', './pages/DocumentScreen', './pages/KnowYourRightsScreen', './pages/ResourcesScreen', './pages/SettingsScreen'],
+              'pages': ['./pages/HomeScreen', './pages/ActScreen', './pages/GuideScreen', './pages/KnowYourRightsScreen', './pages/ResourcesScreen', './pages/SettingsScreen'],
             },
           },
         },
