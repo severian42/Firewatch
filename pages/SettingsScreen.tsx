@@ -14,6 +14,8 @@ const SettingsScreen: React.FC = () => {
   const [geminiModel, setGeminiModel] = useState<string>(settings.geminiModel || 'gemini-2.0-flash-exp');
   const [savedMessage, setSavedMessage] = useState<string>('');
 
+  // Removed script-based Ko-fi widget to avoid page overwrite; will use static image link instead.
+
   const availableModels = [
     { value: 'gemini-2.5-flash', label: 'Gemini 2.5 Flash' },
     { value: 'gemini-2.5-pro', label: 'Gemini 2.5 Pro' },
@@ -215,6 +217,13 @@ const SettingsScreen: React.FC = () => {
           {savedMessage && <p className="text-green-400 transition-opacity duration-300">{savedMessage}</p>}
         </div>
       </form>
+
+      {/* Ko-fi support button */}
+      <div className="flex justify-center mt-10">
+        <a href="https://ko-fi.com/N4N4XZ2TZ" target="_blank" rel="noopener noreferrer">
+          <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" />
+        </a>
+      </div>
     </div>
   );
 };
