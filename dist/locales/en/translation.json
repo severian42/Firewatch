@@ -1,0 +1,755 @@
+{
+  "settings_title": "Settings",
+  "settings_description": "Manage your preferences and emergency information.",
+  "language_preference_title": "Language Preference",
+  "language_preference_description": "This app is written in English. Selecting a language below signals your preference to the browser. If your browser has a built-in translation feature (like Chrome's), it should prompt you to translate the page.",
+  "language_preference_note": "Note: This feature depends entirely on your browser's capabilities and settings. The app itself does not perform translation.",
+  "fallback_location_title": "Fallback Location",
+  "fallback_location_description": "This location will be used for area scans if the app cannot access your device's GPS.",
+  "city_label": "City",
+  "state_label": "State",
+  "zip_code_label": "Zip Code",
+  "ai_config_title": "AI Configuration",
+  "ai_config_description": "Configure your own Gemini API key and model for AI-powered features like area scanning and legal assistance.",
+  "gemini_api_key_label": "Gemini API Key",
+  "gemini_api_key_placeholder": "Enter your Gemini API key",
+  "gemini_api_key_note": "🔒 Your API key is stored securely in your browser's local storage only. It never leaves your device and cannot be accessed by anyone else, including the app developers.",
+  "ai_model_label": "AI Model",
+  "emergency_contacts_title": "Emergency Contacts",
+  "emergency_contacts_description": "These contacts will be notified when you activate the emergency broadcast.",
+  "contact_name_placeholder": "Name",
+  "contact_phone_placeholder": "Phone Number",
+  "add_contact_button": "+ Add Contact",
+  "about_title": "About",
+  "about_description": "Firewatch is an open-source project. You can find the source code on GitHub.",
+  "github_repository_link": "Firewatch GitHub Repository",
+  "developed_by_text": "Developed with AI assistance by",
+  "developer_tagline": "— Custom AI solutions for modern development challenges.",
+  "privacy_security_title": "Privacy & Security",
+  "privacy_secure_data_title": "🔒 Your Data Stays Private",
+  "privacy_item_1": "• All API keys are stored locally in your browser's storage only",
+  "privacy_item_2": "• No data is sent to external servers except your direct API calls to Google",
+  "privacy_item_3": "• App developers cannot access your API key or any personal information",
+  "privacy_item_4": "• All recordings and evidence remain on your device unless you choose to share them",
+  "save_settings_button": "Save Settings",
+  "settings_saved_message": "Settings saved successfully!",
+  "key_phrases": {
+    "detained": "Officer, am I being detained, or am I free to go?",
+    "silent": "I am going to remain silent.",
+    "lawyer": "I want to speak with a lawyer.",
+    "no_consent": "I do not consent to a search of my person, property, or vehicle.",
+    "warrant": "Please show me the warrant."
+  },
+  "checklist": {
+    "date_time_location": "Note the date, time, and location of the incident.",
+    "officer_names_badges": "Get officer names and badge numbers.",
+    "patrol_car_numbers": "Write down patrol car numbers.",
+    "record_injuries": "Record any injuries and take photos.",
+    "witness_info": "Note potential witnesses and get their contact information.",
+    "write_down_everything": "Write down everything you remember as soon as possible.",
+    "do_not_resist": "Do not resist, even if you believe the arrest is unlawful."
+  },
+  "toolkit": {
+    "script": "Know Your Script",
+    "law": "State Recording Law",
+    "checklist": "Incident Checklist",
+    "jargon": "Legal Jargon Buster"
+  },
+  "nav": {
+    "home": "Home",
+    "alerts": "Alerts",
+    "rights": "Rights",
+    "document": "Document",
+    "guide": "Guide",
+    "settings": "Settings"
+  },
+  "rights_topics": {
+    "traffic_stop": "Traffic Stop",
+    "home_visit": "Home Visit",
+    "workplace_raid": "Workplace Raid",
+    "public_protest": "Public Protest",
+    "questioning": "Being Questioned",
+    "filming_police": "Filming Police"
+  },
+  "simulators": {
+    "traffic_stop": "Traffic Stop Simulation",
+    "workplace_raid": "Workplace Raid Response",
+    "home_visit": "Home Visit Encounter",
+    "rights_quiz": "Know Your Rights Quiz"
+  },
+  "home_actions": {
+    "record": "Quick Record",
+    "hotline": "Legal Hotline",
+    "location": "Share Location"
+  },
+  "sms": {
+    "emergency_default": "Emergency! This is an automated alert from the Firewatch app. I am in a potential emergency situation. Please check on me.",
+    "no_contacts_alert": "No emergency contacts found. Please add contacts in the Settings menu to use this feature.",
+    "review_message_alert": "Your SMS app will now open to alert your emergency contacts. Please review the message and press send.",
+    "emergency_with_location": "Emergency! This is an automated alert from the Firewatch app. I am in a potential emergency situation. My location is approximately: https://www.google.com/maps?q={{latitude}},{{longitude}}. Please check on me.",
+    "location_fetch_error": "Could not fetch location",
+    "geolocation_not_supported": "Geolocation not supported"
+  },
+  "footer": {
+    "github": "GitHub",
+    "built_by": "Built with AI by Interwoven Arkitech"
+  },
+  "emergency_numbers": {
+    "services": "Emergency Services",
+    "aclu": "ACLU National",
+    "nlg": "National Lawyers Guild",
+    "immigration_hotline": "Immigration Hotline",
+    "bail_fund": "Bail Fund Network"
+  },
+  "common": {
+    "close": "Close",
+    "call": "Call",
+    "copied": "Copied!",
+    "copy_failed": "Failed to copy",
+    "cancel": "Cancel",
+    "discard": "Discard",
+    "save": "Save",
+    "save_changes": "Save Changes",
+    "delete": "Delete"
+  },
+  "toolkit": {
+    "checklist_modal_title": "Incident Checklist",
+    "emergency_resources_title": "Emergency Resources",
+    "quick_actions": "Quick Actions",
+    "call_911": "🚨 Call 911",
+    "text_emergency_contacts": "📱 Text Emergency Contacts",
+    "legal_hotlines": "Legal Hotlines",
+    "rights_card_title": "Your Rights Card",
+    "rights_card_header": "📋 Keep this info ready:",
+    "rights_card_silent": "• Right to remain silent",
+    "rights_card_searches": "• Right to refuse searches",
+    "rights_card_attorney": "• Right to attorney",
+    "rights_card_record": "• Right to record police",
+    "dashboard_title": "Dashboard Toolkit",
+    "next_phrase": "Next Phrase",
+    "copy_script": "Copy Script",
+    "placeholder_enter_state": "Enter State (e.g., California)",
+    "check_law_button": "Check Law",
+    "error_enter_state": "Please enter a state name.",
+    "error_could_not_retrieve_data": "Could not retrieve data. Please try again.",
+    "checklist_description": "Key details to document during an encounter. Tap to view and track.",
+    "view_checklist_button": "View Checklist",
+    "define_another_term": "Define another term",
+    "placeholder_jargon": "e.g., Probable Cause",
+    "define_term_button": "Define Term",
+    "error_enter_legal_term": "Please enter a legal term.",
+    "error_could_not_define_term": "Could not define this term. Please try another.",
+    "emergency_resources_description": "Quick access to legal hotlines, emergency contacts, and your rights.",
+    "get_help_now_button": "Get Help Now"
+  },
+  "alerts_screen": {
+    "title": "Alerts",
+    "description": "Real-time enforcement activity and community alerts.",
+    "test_data_warning_title": "🚨 Attention: Test Data Displayed! 🚨",
+    "test_data_warning_body": "Currently, you're viewing <1>sample alerts</1> for demonstration purposes. These are not live, real-time incidents. To ensure your safety and receive accurate, localized threat intelligence, please <3>securely configure your API key in Settings</3>. Once set up, activate the <5>Location Scanner</5> below to actively monitor your immediate area. Your protection is our priority, and live data ensures you're truly informed.",
+    "community_alerts_title": "Community Verified Alerts",
+    "no_active_alerts": "No Active Alerts",
+    "all_quiet": "It's all quiet for now. New alerts will appear here."
+  },
+  "time": {
+    "seconds_ago": "{{count}}s ago",
+    "minutes_ago": "{{count}}m ago",
+    "hours_ago": "{{count}}h ago",
+    "days_ago": "{{count}}d ago"
+  },
+  "alerts": {
+    "verified": "Verified",
+    "status_note_title": "Status Note:",
+    "status_note_body": "The current status (<1>Area Status: High Threat - Red</1>) is based on community-sourced reports and may not be exhaustive or immediately verifiable. Always prioritize your safety and cross-reference information if possible."
+  },
+  "alert_types": {
+    "immediate_threat": "Immediate Threat",
+    "area_watch": "Area Watch",
+    "pattern_alert": "Pattern Alert",
+    "all_clear": "All Clear"
+  },
+  "location_scanner": {
+    "title": "Live Area Scan",
+    "manual_input_description": "Enter a location to search for recent civil rights related events and alerts, covering the entire perimeter and larger area.",
+    "default_description": "Use our AI-powered scanner to search for recent civil rights related events in your vicinity, covering the entire perimeter and larger area.",
+    "scan_my_location_instead": "Scan With My Location Instead",
+    "scan_my_area": "Scan My Area",
+    "scan_different_location": "or scan a different location",
+    "scan_notice_title": "Scan Notice",
+    "city_placeholder": "City",
+    "state_placeholder": "State",
+    "zip_placeholder": "Zip Code",
+    "scan_this_location_button": "Scan This Location",
+    "scan_summary_title": "Scan Summary",
+    "sources_title": "Sources",
+    "fallback_error": "Could not determine your current location. Using your saved fallback location to scan: {{location}}",
+    "no_results_error": "The scan returned no results. This may be an issue with the AI service.",
+    "unknown_error": "An unknown error occurred during the scan.",
+    "geolocation_not_supported": "Geolocation is not supported by your browser.",
+    "permission_denied_error": "Location permission denied. Please enable location access, or pre-configure a fallback location in Settings to use this feature.",
+    "city_zip_required_error": "Please provide at least a City or Zip Code to scan."
+  },
+  "camera_view": {
+    "video_evidence": "Video Evidence",
+    "audio_evidence": "Audio Evidence",
+    "photo_evidence": "Photo Evidence",
+    "emergency_audio_recording": "Emergency Audio Recording",
+    "stop_recording_aria": "Stop recording",
+    "capture_aria": "Capture {{mediaType}}",
+    "preview": "Preview",
+    "duration": "Duration: {{duration}}",
+    "recording_audio": "Recording Audio...",
+    "ready_to_record": "Ready to record audio",
+    "placeholder": "Camera Feed Placeholder"
+  },
+  "emergency_modal": {
+    "title": "Emergency Mode",
+    "description": "Confirm your action by pressing and holding the desired button.",
+    "broadcast_button": "Broadcast Alert & Record",
+    "covert_button": "Start Covert Recording"
+  },
+  "hold_to_activate": {
+    "aria_label": "Press and hold to activate {{text}}",
+    "holding": "Holding..."
+  },
+  "evidence_modal": {
+    "title": "Evidence Details",
+    "recording_type": "{{type}} Recording",
+    "media_placeholder": "Media Preview Placeholder",
+    "title_label": "Title",
+    "notes_label": "Notes",
+    "notes_placeholder": "Add any relevant details...",
+    "edit_aria_label": "Edit details",
+    "no_notes": "No notes added.",
+    "delete_confirm_message": "Are you sure you want to permanently delete this item?",
+    "delete_button": "Delete Evidence"
+  },
+  "header": {
+    "logo_alt": "Firewatch - Civil Rights Protection"
+  },
+  "panic_button": {
+    "aria_label": "Activate Emergency Panic Button"
+  },
+  "pwa": {
+    "offline_ready": "App ready to work offline",
+    "new_content_available": "New content available, click on reload button to update.",
+    "reload": "Reload",
+    "install": "Install App"
+  },
+  "recording_button": {
+    "aria_label": "Start Recording: {{label}}"
+  },
+  "simulations": {
+    "back_to_simulators": "Back to simulators",
+    "complete_title": "Simulation Complete!",
+    "step": "Step {{count}}",
+    "scenario": "Scenario",
+    "your_choice": "Your choice",
+    "result": "Result",
+    "try_again": "Try Again"
+  },
+  "sim_home_visit": {
+    "start": {
+      "scenario": "There's a knock at your door. You look through the peephole and see people who appear to be law enforcement. What's your first step?",
+      "options": [
+        {
+          "text": "Don't open the door immediately, ask who they are and what they want",
+          "consequence": "Good! You have no obligation to open your door without knowing who is there and why."
+        },
+        {
+          "text": "Open the door to see what they want",
+          "consequence": "Opening the door gives officers visual access to your home and potentially weakens your privacy rights."
+        },
+        {
+          "text": "Ignore the knock and stay quiet",
+          "consequence": "While you can choose not to respond, it's often better to communicate through the door."
+        }
+      ]
+    },
+    "identify_officers": {
+      "scenario": "They say they're police officers investigating a complaint. They want to come in and talk. How do you respond?",
+      "options": [
+        {
+          "text": "Ask to see a warrant through the door or window",
+          "consequence": "Perfect! Officers generally need a warrant to enter your home without permission."
+        },
+        {
+          "text": "Let them in to avoid seeming uncooperative",
+          "consequence": "Once you allow entry, you may have given up important constitutional protections."
+        },
+        {
+          "text": "Tell them to come back later",
+          "consequence": "This might work, but asking for a warrant is more specific and legally protective."
+        }
+      ]
+    },
+    "warrant_check": {
+      "scenario": "They say they don't have a warrant but claim they have probable cause. They insist on entering. What do you do?",
+      "options": [
+        {
+          "text": "Clearly state: 'I do not consent to any searches or entry without a warrant'",
+          "consequence": "Excellent! You've clearly asserted your Fourth Amendment rights."
+        },
+        {
+          "text": "Step outside to talk to them, closing the door behind you",
+          "consequence": "This can be a reasonable compromise, but ensure you don't accidentally give consent."
+        },
+        {
+          "text": "Allow them to enter since they seem insistent",
+          "consequence": "Consenting to entry waives your right to challenge the search later."
+        }
+      ]
+    },
+    "assert_rights": {
+      "scenario": "They become more insistent and mention they could get a warrant easily. They ask if you have something to hide. How do you respond?",
+      "options": [
+        {
+          "text": "I have nothing to hide, but I know my rights and require a warrant for entry",
+          "consequence": "Perfect balance of asserting rights while remaining polite and non-confrontational."
+        },
+        {
+          "text": "Start arguing about constitutional rights",
+          "consequence": "While you're correct, being confrontational can escalate the situation."
+        },
+        {
+          "text": "Give up and let them in",
+          "consequence": "You've waived your rights by giving consent to search."
+        }
+      ]
+    },
+    "legal_counsel": {
+      "scenario": "They continue to pressure you. What's your next step?",
+      "options": [
+        {
+          "text": "Ask if you're being detained and request to speak with an attorney",
+          "consequence": "Excellent! These are your fundamental rights in any law enforcement encounter."
+        },
+        {
+          "text": "Try to negotiate or compromise",
+          "consequence": "Negotiating your constitutional rights isn't advisable. Stick to clear assertions."
+        },
+        {
+          "text": "Call a friend for advice while they're at the door",
+          "consequence": "While calling an attorney is good, focus on asserting your rights clearly first."
+        }
+      ]
+    },
+    "end": {
+      "scenario": "Remember: Your home has the strongest privacy protections. Never consent to searches without a warrant, stay calm, and ask for legal counsel."
+    }
+  },
+  "quiz": {
+    "q1": {
+      "question": "During a traffic stop, when can police search your car without a warrant?",
+      "options": [
+        "Anytime they want",
+        "Only if they have probable cause to believe there's evidence of a crime",
+        "Only if you give them permission",
+        "Never without a warrant"
+      ],
+      "explanation": "Police can search your car without a warrant if they have probable cause to believe it contains evidence of a crime. This is known as the 'automobile exception' to the warrant requirement."
+    },
+    "q2": {
+      "question": "Do you have to answer questions from law enforcement at your home?",
+      "options": [
+        "Yes, always",
+        "No, you can remain silent except to provide your name",
+        "Only if they have a warrant",
+        "Only if you're being arrested"
+      ],
+      "explanation": "You have the right to remain silent and don't have to answer questions beyond providing your name. You can speak through the door or step outside and close the door behind you."
+    },
+    "q3": {
+      "question": "What should you do if ICE agents come to your workplace?",
+      "options": [
+        "Run away immediately",
+        "Stay calm and don't run - running can create suspicion",
+        "Hide in the bathroom",
+        "Immediately show all your documents"
+      ],
+      "explanation": "Staying calm and not running is crucial. Running can create suspicion and escalate the situation. You have rights regardless of your immigration status."
+    },
+    "q4": {
+      "question": "Can you record police officers during an encounter?",
+      "options": [
+        "No, it's illegal",
+        "Yes, in public spaces where you have a legal right to be",
+        "Only if you ask permission first",
+        "Only if you're not the one being questioned"
+      ],
+      "explanation": "You have the right to record police officers performing their duties in public spaces, as long as you don't interfere with their work."
+    },
+    "q5": {
+      "question": "What should you say if police ask to search your home?",
+      "options": [
+        "Let them in to be cooperative",
+        "I do not consent to any searches without a warrant",
+        "Ask them to come back later",
+        "Only allow them to search the living room"
+      ],
+      "explanation": "Clearly stating 'I do not consent to any searches without a warrant' protects your Fourth Amendment rights. Be polite but firm."
+    },
+    "q6": {
+      "question": "During a traffic stop, when can you ask if you're free to go?",
+      "options": [
+        "Only after getting a ticket",
+        "After the officer has your documents, you can ask 'Am I free to go?'",
+        "Never - you have to wait for them to dismiss you",
+        "Only if you're being arrested"
+      ],
+      "explanation": "After providing required documents, you can politely ask 'Am I free to go?' If yes, you may leave. If no, you are being detained."
+    },
+    "q7": {
+      "question": "What information must you provide during a traffic stop?",
+      "options": [
+        "Everything they ask for",
+        "Only your driver's license, registration, and insurance",
+        "Your entire travel history",
+        "Nothing - you can remain completely silent"
+      ],
+      "explanation": "You must provide your driver's license, vehicle registration, and proof of insurance. Beyond that, you have the right to remain silent."
+    },
+    "q8": {
+      "question": "If you're arrested, what's the most important thing to remember?",
+      "options": [
+        "Answer all questions truthfully",
+        "Ask for a lawyer and remain silent",
+        "Try to explain your side of the story",
+        "Sign any documents they give you"
+      ],
+      "explanation": "The most important thing is to ask for a lawyer and exercise your right to remain silent. Don't sign anything without legal counsel."
+    },
+    "question_of_total": "Question {{current}} of {{total}}",
+    "correct": "Correct!",
+    "incorrect": "Incorrect",
+    "next_question": "Next Question",
+    "see_results": "See Results",
+    "complete_title": "Quiz Complete!",
+    "result_perfect": "Perfect score! You know your rights well!",
+    "result_great": "Great job! You have a good understanding of your rights.",
+    "result_good": "Good effort! Review the material to improve your knowledge.",
+    "question_number": "Question {{number}}",
+    "correct_answer": "✓ Correct",
+    "incorrect_answer": "✗ Incorrect",
+    "retake_quiz": "Take Quiz Again"
+  },
+  "sim_traffic_stop": {
+    "start": {
+      "scenario": "You're driving home when you see flashing lights in your rearview mirror. The police are pulling you over. What's your first move?",
+      "options": [
+        {
+          "text": "Continue driving until I find a safe, well-lit area to pull over",
+          "consequence": "Good thinking! Safety first. Signal your intention and pull over when safe."
+        },
+        {
+          "text": "Stop immediately wherever I am",
+          "consequence": "While you should pull over promptly, prioritize safety. Find a safe spot if possible."
+        },
+        {
+          "text": "Keep driving to avoid the stop",
+          "consequence": "This could escalate the situation and lead to more serious charges."
+        }
+      ]
+    },
+    "pull_over": {
+      "scenario": "You've safely pulled over. The officer approaches your window. What should you do first?",
+      "options": [
+        {
+          "text": "Roll down the window, keep hands visible on the steering wheel",
+          "consequence": "Excellent! This shows cooperation and keeps the officer at ease."
+        },
+        {
+          "text": "Get out of the car to talk to the officer",
+          "consequence": "Staying in the car is generally safer unless instructed otherwise."
+        },
+        {
+          "text": "Start recording on my phone immediately",
+          "consequence": "While you have the right to record, focus on safety and cooperation first."
+        }
+      ]
+    },
+    "officer_questions": {
+      "scenario": "The officer asks: 'Do you know why I pulled you over?' How do you respond?",
+      "options": [
+        {
+          "text": "I'm not sure, officer. Can you tell me?",
+          "consequence": "Good response! You haven't admitted to anything while remaining polite."
+        },
+        {
+          "text": "Yes, I was probably speeding",
+          "consequence": "You've just admitted to a traffic violation. Avoid self-incrimination."
+        },
+        {
+          "text": "I don't have to answer that",
+          "consequence": "While legally true, this could escalate tensions. Consider a more diplomatic approach."
+        }
+      ]
+    },
+    "license_registration": {
+      "scenario": "The officer asks for your license and registration. What's your approach?",
+      "options": [
+        {
+          "text": "Inform the officer before reaching for documents: 'My license is in my wallet in my back pocket'",
+          "consequence": "Perfect! Always inform officers before making movements to avoid misunderstandings."
+        },
+        {
+          "text": "Quickly reach for the glove compartment without saying anything",
+          "consequence": "Sudden movements can make officers nervous. Always communicate your actions."
+        },
+        {
+          "text": "Ask if I'm required to provide these documents",
+          "consequence": "While you are required to provide license and registration, this could seem uncooperative."
+        }
+      ]
+    },
+    "search_request": {
+      "scenario": "The officer says: 'Mind if I take a look in your trunk?' How do you respond?",
+      "options": [
+        {
+          "text": "I do not consent to any searches",
+          "consequence": "Excellent! You've clearly asserted your Fourth Amendment rights."
+        },
+        {
+          "text": "Sure, go ahead",
+          "consequence": "You've consented to a search. Once given, consent can be difficult to withdraw."
+        },
+        {
+          "text": "Do you have a warrant?",
+          "consequence": "Good question! While you can ask this, a simple 'I do not consent' is clearer."
+        }
+      ]
+    },
+    "escalation": {
+      "scenario": "By not pulling over, you've created a more serious situation. The officer may now suspect you're evading. This is not recommended.",
+      "options": [
+        {
+          "text": "Pull over immediately and cooperate fully",
+          "consequence": "Better late than never. Pull over safely and follow all instructions."
+        }
+      ]
+    },
+    "end": {
+      "scenario": "Simulation complete! Remember: Stay calm, be polite, know your rights, and prioritize safety."
+    }
+  },
+  "sim_workplace_raid": {
+    "start": {
+      "scenario": "You're at work when ICE agents enter the building. Your manager announces there's a raid. What's your immediate response?",
+      "options": [
+        {
+          "text": "Stay calm and don't run or create panic",
+          "consequence": "Excellent! Running can create suspicion and escalate the situation."
+        },
+        {
+          "text": "Try to leave the building immediately",
+          "consequence": "Attempting to leave during a raid could be seen as suspicious behavior."
+        },
+        {
+          "text": "Hide in the bathroom or storage room",
+          "consequence": "Hiding might draw more attention and could be interpreted as having something to conceal."
+        }
+      ]
+    },
+    "agent_approach": {
+      "scenario": "An ICE agent approaches you and asks for your name. How do you respond?",
+      "options": [
+        {
+          "text": "Provide your name only, nothing more",
+          "consequence": "Good! You're only required to provide your name in most situations."
+        },
+        {
+          "text": "Give them your full name and explain your immigration status",
+          "consequence": "You have the right to remain silent beyond providing your name."
+        },
+        {
+          "text": "Refuse to say anything at all",
+          "consequence": "While you have the right to remain silent, providing your name is generally required."
+        }
+      ]
+    },
+    "documentation_request": {
+      "scenario": "The agent asks to see your work authorization documents. What do you do?",
+      "options": [
+        {
+          "text": "Ask if you are being detained or if you are free to go",
+          "consequence": "Smart! This clarifies your status and your rights in the situation."
+        },
+        {
+          "text": "Immediately show all your documents",
+          "consequence": "While cooperation might seem helpful, you have rights regarding document requests."
+        },
+        {
+          "text": "Say you don't have any documents with you",
+          "consequence": "This could complicate your situation. Focus on clarifying your status first."
+        }
+      ]
+    },
+    "detention_status": {
+      "scenario": "The agent says you need to come with them for questioning. How do you respond?",
+      "options": [
+        {
+          "text": "Ask to see a warrant and state you want to speak with a lawyer",
+          "consequence": "Perfect! You have the right to see a warrant and legal representation."
+        },
+        {
+          "text": "Go with them without asking questions",
+          "consequence": "You have the right to understand why you're being detained and to legal counsel."
+        },
+        {
+          "text": "Physically resist being taken",
+          "consequence": "Physical resistance can lead to additional charges. Stay calm and assert your rights verbally."
+        }
+      ]
+    },
+    "legal_rights": {
+      "scenario": "You assert your rights to see a warrant and speak with a lawyer. The agent seems frustrated. What now?",
+      "options": [
+        {
+          "text": "Remain silent and continue requesting legal counsel",
+          "consequence": "Excellent! You have the right to remain silent and request an attorney."
+        },
+        {
+          "text": "Try to explain your situation to change their mind",
+          "consequence": "Anything you say can be used against you. It's best to wait for your attorney."
+        },
+        {
+          "text": "Sign any documents they present",
+          "consequence": "Never sign documents without understanding them or having legal counsel review them."
+        }
+      ]
+    },
+    "end": {
+      "scenario": "Remember: You have rights regardless of immigration status. Stay calm, ask for a lawyer, and don't sign anything without legal counsel."
+    }
+  },
+  "doc_screen": {
+    "title": "Document",
+    "description": "Securely record evidence and manage your case files.",
+    "guidelines_title": "Recording Guidelines",
+    "start_recording_title": "Start Recording",
+    "record_video_button": "Record Video",
+    "record_audio_button": "Record Audio",
+    "take_photo_button": "Take Photo",
+    "recent_evidence_title": "Recent Evidence",
+    "no_evidence": "No evidence recorded yet.",
+    "recordings_appear_here": "Your recordings will appear here.",
+    "guidance": {
+      "video": {
+        "title": "Video Recording Rights",
+        "tip1": "You can record police in public spaces",
+        "tip2": "Keep a safe distance",
+        "tip3": "Don't interfere with police duties",
+        "tip4": "Announce you're recording for safety",
+        "tip5": "Save to cloud immediately if possible",
+        "legal": "Recording police is protected by First Amendment in public spaces"
+      },
+      "audio": {
+        "title": "Audio Recording Laws",
+        "tip1": "Check your state's consent laws",
+        "tip2": "One-party consent: You can record if you're part of conversation",
+        "tip3": "Two-party consent: All parties must agree",
+        "tip4": "Be aware of federal vs state laws",
+        "legal": "Laws vary by state - use the toolkit to check your state's rules"
+      },
+      "photo": {
+        "title": "Photography Rights",
+        "tip1": "You can photograph anything visible from public space",
+        "tip2": "Police can't demand to see your photos without warrant",
+        "tip3": "Private property owners can set rules",
+        "tip4": "Be respectful but know your rights",
+        "legal": "Photography in public is protected First Amendment activity"
+      }
+    }
+  },
+  "guide_screen": {
+    "title": "Firewatch Guide & Resources",
+    "back_to_guide": "Back to Guide",
+    "docs_button_title": "App Documentation",
+    "docs_button_description": "Complete guide to all Firewatch features and how to use them effectively.",
+    "resources_button_title": "Emergency Resources",
+    "resources_button_description": "Legal hotlines, support organizations, and emergency contacts.",
+    "legal_notice_title": "⚠️ Important Legal Notice",
+    "legal_notice_body": "This app provides information and tools for educational purposes. It is not a substitute for professional legal advice. Always consult with a qualified attorney for legal matters. Laws vary by jurisdiction and may change over time.",
+    "developed_by_notice": "Firewatch was developed with advanced AI assistance by <1>Interwoven Arkitech</1> to ensure robust, reliable civil rights protection tools."
+  },
+  "home_screen": {
+    "panic_button_aria_label": "Emergency Panic Button - Activates emergency broadcast and recording",
+    "emergency_button_title": "EMERGENCY",
+    "emergency_button_subtitle": "Tap to activate panic mode",
+    "welcome_title": "Welcome to Firewatch",
+    "welcome_subtitle": "Your civil rights protection companion. Document, report, and stay informed.",
+    "rights_button_title": "Know Your Rights",
+    "rights_button_subtitle": "Quick access to your legal protections",
+    "document_button_title": "Document Safely",
+    "document_button_subtitle": "Secure recording with legal guidance",
+    "area_status_title": "Area Status",
+    "status_ready": "READY",
+    "status_standby": "STANDBY",
+    "status_description": "System ready. Use tools below to scan your area.",
+    "status_update_note": "Status updates when you scan your location",
+    "active_alerts_title": "Active Alerts",
+    "no_active_alerts": "No active alerts",
+    "scan_for_updates": "Scan your area to check for updates",
+    "map_title": "Community Safety Map",
+    "map_subtitle": "Real-time community reports and safety information from our partners",
+    "map_disclaimer": "🔒 This map is embedded from an external service. Your location and data remain private to your device.",
+    "recent_evidence_title": "Recent Evidence",
+    "no_evidence": "No evidence recorded yet. Use the camera to start documenting."
+  },
+  "know_your_rights_screen": {
+    "title": "Know Your Rights",
+    "educational_topics_title": "Educational Topics",
+    "educational_topics_subtitle": "Learn about your rights in different situations",
+    "scenario_simulator_title": "Scenario Simulator",
+    "scenario_simulator_subtitle": "Practice how to respond in real-life situations.",
+    "back_to_topics": "Back to topics",
+    "content_not_found": "Could not find information for the selected topic."
+  },
+  "documentation": {
+    "content": "# Firewatch App Guide\n\nWelcome to Firewatch! This guide explains all the features available to help you stay informed, document encounters, and protect your rights.\n\n## The Dashboard (Home Screen)\n\nYour central hub for quick actions and status updates.\n\n* **Panic Button:** The large red button at the top. Pressing it opens the Emergency Modal, giving you two critical options.\n* **Emergency Broadcast & Record:** Press and hold this button to simultaneously send a pre-written SMS alert with your location to your designated Emergency Contacts and start a covert audio recording.\n* **Covert Record:** Press and hold this to start a discreet audio recording without sending an alert.\n* **Quick Action Buttons:**\n  * **Quick Record:** Jumps you to the Document screen to start recording.\n  * **Legal Hotline:** Dials the ACLU's general number. You must confirm before the call is placed.\n  * **Share Location:** Uses your device's native share feature to send a Google Maps link of your current location.\n* **Area Status:** Shows a color-coded threat level (Red, Yellow, Green) based on the latest verified community alerts. This gives you an at-a-glance sense of local activity.\n* **Dashboard Toolkit:** A set of four powerful mini-apps for on-the-spot information.\n\n## Dashboard Toolkit Explained\n\n* **Know Your Script:** Cycles through key legal phrases (e.g., \"I do not consent to a search.\"). Use the \"Copy\" button to put the phrase on your clipboard.\n* **State Recording Law:** Enter any U.S. state to see if it's a \"One-Party\" or \"Two-Party\" consent state for recording audio. This is crucial for understanding your rights when filming.\n* **Incident Checklist:** An interactive checklist of important steps to take during or after an incident (e.g., getting badge numbers). Your progress is saved as you check items off.\n* **Legal Jargon Buster:** Enter a complex legal term (like \"probable cause\" or \"exculpatory evidence\") and get a simple, plain-language definition.\n\n## Alerts Screen\n\nThis screen provides real-time intelligence.\n\n* **Live Area Scan:** This is the primary feature.\n  * **Scan My Area:** Uses your device's GPS to perform an AI-powered search of recent news and social media for civil rights-related events in your immediate vicinity.\n  * **Manual Scan:** You can also type in any city, state, or zip code to scan a different location. This is useful for checking on family or planning travel.\n  * The scan provides a summary and a list of source links.\n* **Community Verified Alerts:** A feed of curated, high-priority alerts that have been vetted by the community.\n\n## Know Your Rights Screen\n\nAn educational resource to prepare you for potential encounters.\n\n* **Topics:** Select a scenario (like \"Traffic Stop\" or \"Home Visit\") to read a detailed guide on your rights and recommended actions in that situation.\n* **Scenario Simulator:** (Coming Soon!) Interactive modules that let you practice responding to various situations.\n\n## Document Screen\n\nYour secure evidence locker.\n\n* **Recording:** Use the buttons to launch the recorder for video, audio, or photos. The recorder is a placeholder and simulates the recording process.\n* **Evidence List:** All your saved recordings appear here. Tap any item to view its details.\n* **Evidence Details:** In the detail view, you can:\n  * **Edit:** Change the title and add detailed notes to your evidence.\n  * **Delete:** Permanently and securely delete evidence after a confirmation. All data is stored locally on your device for privacy.\n\n## Guide Screen\n\nThis screen contains this App Guide and other essential resources.\n\n* **App Documentation:** The guide you are reading right now.\n* **Resource Categories:** Find lists of external organizations that can help, such as:\n  * National Legal Organizations\n  * Immigration Resources\n  * Bail & Community Funds\n\n## Settings Screen\n\nCustomize the app to your needs.\n\n* **Fallback Location:** Set a default city/state/zip. The Live Area Scan will use this location if you deny GPS permissions or if it can't get a location lock.\n* **Emergency Contacts:** Add, edit, or remove the phone numbers of people you want to alert when you use the Emergency Broadcast feature. This is the most important setting to configure!\n\nRemember: This app is a tool to empower you with information. It is not a substitute for legal advice. Always try to consult with a qualified attorney for legal matters."
+  },
+  "resources": {
+    "categories": {
+      "legal_help": {
+        "title": "Emergency Legal Help",
+        "items": [
+          { "name": "National Lawyers Guild", "description": "Legal support for activists and protesters" },
+          { "name": "ACLU National", "description": "Civil liberties legal assistance" },
+          { "name": "National Police Accountability Project", "description": "Police misconduct legal help" }
+        ]
+      },
+      "immigration": {
+        "title": "Immigration Resources",
+        "items": [
+          { "name": "Immigration Hotline", "description": "24/7 immigration legal help" },
+          { "name": "United We Dream", "description": "Immigrant youth support" },
+          { "name": "National Immigration Law Center", "description": "Immigration law resources" }
+        ]
+      },
+      "bail_funds": {
+        "title": "Bail & Support Funds",
+        "items": [
+          { "name": "National Bail Fund Network", "description": "Directory of local bail funds" },
+          { "name": "The Bail Project", "description": "Free bail assistance" },
+          { "name": "Community Justice Exchange", "description": "Bail and court support resources" }
+        ]
+      },
+      "mental_health": {
+        "title": "Mental Health & Crisis",
+        "items": [
+          { "name": "Crisis Text Line", "description": "24/7 crisis support via text" },
+          { "name": "National Suicide Prevention Lifeline", "description": "24/7 crisis support" },
+          { "name": "Black Emotional and Mental Health Collective", "description": "Black mental health resources" }
+        ]
+      }
+    }
+  },
+  "rights_content": {
+    "traffic_stop": "# Traffic Stop\n\n## What to Do\n* Turn on your interior light if it's dark.\n* Keep your hands on the steering wheel where the officer can see them.\n* Limit your movements.\n* If you need to get your license and registration, tell the officer where they are and ask for permission before reaching for them.\n* You do not have to consent to a search of your car. If the officer asks, you can say \"Officer, I do not consent to searches.\"\n* If the officer has probable cause, they may be able to search your car anyway.\n\n## What to Say\n* Provide your driver's license, registration, and proof of insurance when requested.\n* You are only required to identify yourself. You do not have to answer questions about where you are going or where you are coming from.\n* You can state, \"I am going to remain silent.\"\n* If you wish to end the interaction, you can ask, \"Am I free to go?\"\n\n## Important Rights\n* **The Fourth Amendment** protects you from unreasonable searches and seizures. Generally, police need a warrant to search your property, but there are exceptions for vehicles.\n* **The Fifth Amendment** gives you the right to remain silent to avoid self-incrimination.",
+    "home_visit": "# Home Visit\n\n## What to Do\n* Do not open your door to law enforcement unless they have a warrant signed by a judge.\n* If they say they have a warrant, ask them to slip it under the door or hold it up to a window so you can read it.\n* A warrant must specify the address to be searched and the people or things to be seized.\n* If they do not have a warrant, you do not have to let them in, and you do not have to answer their questions. You can speak to them through the closed door.\n\n## What to Say\n* \"Officer, do you have a warrant?\"\n* If they don't have a warrant: \"I do not consent to you entering my home.\"\n* \"I am going to remain silent. I want to speak with a lawyer.\"\n* You do not have to answer any questions.\n\n## Important Rights\n* **The Fourth Amendment** provides the strongest protection for your home. Police cannot enter without a warrant, your consent, or an emergency situation (like hearing screams for help).\n* You have the right to refuse entry if police do not have a warrant.",
+    "workplace_raid": "# Workplace Raid\n\n## What to Do\n* Do not run or resist arrest, even if you believe the raid is unjust. This could lead to additional charges.\n* Stay calm and do not provide false documents or information.\n* Do not physically obstruct officers.\n* Pay attention to the details of the raid: who is being arrested, what areas are being searched.\n\n## What to Say\n* You have the right to remain silent. You can say, \"I am going to remain silent and I want to speak to a lawyer.\"\n* Do not answer questions about your immigration status or where you were born.\n* If you are an employer, you can state that you do not consent to a search of non-public areas of your business without a warrant.\n\n## Important Rights\n* **The Fourth Amendment** protects against unreasonable searches of your person and workplace, though the level of protection is different from your home.\n* **The Fifth Amendment** protects your right to remain silent. This applies to all individuals, regardless of citizenship status.",
+    "public_protest": "# Public Protest\n\n## What to Do\n* You can generally protest in public spaces like streets, sidewalks, and parks.\n* You may need a permit for larger protests, marches, or if you are using sound amplification. Check local regulations.\n* Police can order you to disperse if the protest becomes violent or is blocking access to public or private property. You should follow lawful orders to disperse.\n* Stay on public property. Protesting on private property without permission is trespassing.\n\n## What to Say\n* You do not have to answer questions from law enforcement about your political beliefs or affiliations.\n* If an officer stops you, you can ask, \"Am I free to go?\"\n* If you are being arrested, you can say, \"I am going to remain silent. I would like a lawyer.\"\n\n## Important Rights\n* **The First Amendment** protects your rights to freedom of speech and peaceful assembly.\n* These rights are not absolute. The government can place reasonable \"time, place, and manner\" restrictions on protests to ensure public safety.",
+    "questioning": "# Being Questioned\n\n## What to Do\n* Determine if you are free to leave. You can ask the officer, \"Am I being detained, or am I free to go?\"\n* If you are free to go, you can calmly walk away.\n* If you are being detained or are under arrest, do not resist physically.\n* Do not lie or provide false documents.\n\n## What to Say\n* You can and should say, \"I am going to remain silent.\"\n* You can and should say, \"I want to speak with a lawyer.\"\n* You only need to provide your name if you are being detained or arrested. You do not need to answer other questions.\n* Repeat these phrases as necessary. Answering one question can sometimes be interpreted as waiving your right to remain silent for further questions.\n\n## Important Rights\n* **The Fifth Amendment** gives you the right to remain silent and not incriminate yourself.\n* **The Sixth Amendment** gives you the right to an attorney. You should invoke this right immediately upon being arrested.",
+    "filming_police": "# Filming Police\n\n## What to Do\n* You have a right to film police officers in public while they are performing their official duties.\n* Stay at a safe distance and do not interfere with their actions. If they give you a lawful order to step back, do so.\n* You can film openly. You do not need to hide your camera.\n* Police cannot delete your footage or confiscate your device without a warrant.\n\n## What to Say\n* If an officer tells you to stop recording, you can say, \"I have a First Amendment right to record police in public.\"\n* Do not antagonize the officers. The goal is to document, not escalate.\n* If they ask for your phone to view the video, you can say, \"I do not consent to a search of my phone.\"\n\n## Important Rights\n* **The First Amendment** has been interpreted by most federal courts to protect the right to record police officers in public.\n* **The Fourth Amendment** protects your phone and its contents from being searched without a warrant."
+  }
+} 

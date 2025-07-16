@@ -1,7 +1,7 @@
 
 import type { ReactNode } from 'react';
 
-export type Screen = 'Home' | 'Alerts' | 'Rights' | 'Document' | 'Guide' | 'Settings';
+export type Screen = 'Home' | 'Act' | 'Rights' | 'Guide' | 'Settings';
 
 export interface NavItem {
   id: Screen;

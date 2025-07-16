@@ -68,9 +68,17 @@ const SettingsScreen: React.FC = () => {
 
         {/* Browser Translation */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-          <h2 className="text-xl font-semibold text-blue-400 mb-2">Language</h2>
-          <p className="text-gray-400 text-sm">
-            To view this app in another language, use your browser's built-in translation feature. In most browsers, you can right-click the page and select 'Translate'.
+          <h2 className="text-xl font-semibold text-blue-400 mb-2">Translate the App</h2>
+          <p className="text-gray-400 text-sm mb-4">
+            This app can be translated into any language using your browser's built-in tools. Here’s how:
+          </p>
+          <ul className="list-disc list-inside space-y-2 text-gray-300 text-sm">
+            <li><strong>On Desktop (Chrome, Edge, Firefox):</strong> Right-click anywhere on the page and select "Translate" or "Translate to [Your Language]".</li>
+            <li><strong>On iPhone/iPad (Safari):</strong> Tap the "aA" icon in the address bar and choose "Translate to [Your Language]".</li>
+            <li><strong>On Android (Chrome):</strong> A translation bar should appear at the bottom of the screen. If not, tap the three-dot menu and select "Translate...".</li>
+          </ul>
+          <p className="text-xs text-gray-500 mt-3">
+            Note: Translations are provided by your browser and may not be perfectly accurate.
           </p>
         </div>
         
@@ -98,36 +106,53 @@ const SettingsScreen: React.FC = () => {
 
         {/* Gemini AI Settings */}
         <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-          <h2 className="text-xl font-semibold text-blue-400 mb-2">AI Configuration</h2>
+          <h2 className="text-xl font-semibold text-blue-400 mb-2">AI Configuration (Optional)</h2>
           <p className="text-gray-400 text-sm mb-4">
-            Configure your own Gemini API key and model for AI-powered features like area scanning and legal assistance.
+            AI-powered features like area scanning require a free Gemini API key from Google. This is optional, but enhances the app's capabilities. Your key is stored securely on your device and is never shared.
           </p>
+          
+          <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700 mb-6">
+            <h3 className="font-semibold text-blue-300 mb-2">How to get your free API Key:</h3>
+            <ol className="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+              <li>
+                Go to the{' '}
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-blue-400 underline hover:text-blue-300">
+                  Google AI Studio
+                </a>.
+              </li>
+              <li>Sign in with your Google account.</li>
+              <li>Click "Create API key in new project".</li>
+              <li>Copy the long string of letters and numbers that appears.</li>
+              <li>Paste it into the field below and click "Save Settings" at the bottom of this page.</li>
+            </ol>
+          </div>
+
           <div className="space-y-4">
             <div>
-              <label htmlFor="gemini-api-key" className="block text-sm font-medium text-gray-700 mb-1">
-                Gemini API Key
+              <label htmlFor="gemini-api-key" className="block text-sm font-medium text-gray-300 mb-1">
+                Your Gemini API Key
               </label>
               <input
                 type="password"
                 id="gemini-api-key"
                 value={geminiApiKey}
                 onChange={(e) => setGeminiApiKey(e.target.value)}
-                placeholder="Enter your Gemini API key"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                placeholder="Paste your API key here"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <p className="mt-2 text-xs text-gray-500">
                 🔒 Your API key is stored securely in your browser's local storage only. It never leaves your device and cannot be accessed by anyone else, including the app developers.
               </p>
             </div>
             <div>
-              <label htmlFor="gemini-model" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="gemini-model" className="block text-sm font-medium text-gray-300 mb-1">
                 AI Model
               </label>
               <select
                 id="gemini-model"
                 value={geminiModel}
                 onChange={(e) => setGeminiModel(e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 bg-gray-700 border border-gray-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 {availableModels.map(model => (
                   <option key={model.value} value={model.value}>{model.label}</option>

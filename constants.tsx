@@ -31,9 +31,8 @@ export const TOOLKIT_CONFIG = [
 
 export const NAV_ITEMS_CONFIG = [
   { id: 'Home', label: 'Home', icon: <HomeIcon /> },
-  { id: 'Alerts', label: 'Alerts', icon: <BellIcon /> },
+  { id: 'Act', label: 'Act', icon: <DocumentTextIcon /> },
   { id: 'Rights', label: 'Rights', icon: <ShieldCheckIcon /> },
-  { id: 'Document', label: 'Document', icon: <DocumentTextIcon /> },
   { id: 'Guide', label: 'Guide', icon: <LifebuoyIcon /> },
   { id: 'Settings', label: 'Settings', icon: <Cog6ToothIcon /> },
 ] as const;

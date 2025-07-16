@@ -5,9 +5,8 @@ import { NAV_ITEMS_CONFIG } from './constants';
 import Header from './components/Header';
 import BottomNav from './components/BottomNav';
 import HomeScreen from './pages/HomeScreen';
-import AlertsScreen from './pages/AlertsScreen';
+import ActScreen from './pages/ActScreen';
 import KnowYourRightsScreen from './pages/KnowYourRightsScreen';
-import DocumentScreen from './pages/DocumentScreen';
 import GuideScreen from './pages/GuideScreen';
 import SettingsScreen from './pages/SettingsScreen';
 import PanicButton from './components/PanicButton';
@@ -81,17 +80,15 @@ const App: React.FC = () => {
     switch (activeScreen) {
       case 'Home':
         return <HomeScreen setActiveScreen={setActiveScreen} onPanicActivate={handlePanicActivate} />;
-      case 'Alerts':
-        return <AlertsScreen />;
-      case 'Rights':
-        return <KnowYourRightsScreen />;
-      case 'Document':
-        return <DocumentScreen 
-                    evidence={evidenceList} 
-                    onAddEvidence={handleAddNewEvidence} 
+      case 'Act':
+        return <ActScreen 
+                    evidence={evidenceList}
+                    onAddEvidence={handleAddNewEvidence}
                     onDeleteEvidence={handleDeleteEvidence}
                     onUpdateEvidence={handleUpdateEvidence}
                 />;
+      case 'Rights':
+        return <KnowYourRightsScreen />;
       case 'Guide':
         return <GuideScreen />;
       case 'Settings':

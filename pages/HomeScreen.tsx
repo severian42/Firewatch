@@ -6,6 +6,7 @@ import EvidenceListItem from '../components/EvidenceListItem';
 import { useEvidence } from '../hooks/useEvidence';
 import { ShieldExclamationIcon } from '../components/Icons';
 import type { Screen } from '../types';
+import LocationScanner from '../components/LocationScanner';
 
 interface HomeScreenProps {
   setActiveScreen: (screen: Screen) => void;
@@ -53,9 +54,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ setActiveScreen, onPanicActivat
             </button>
           </div>
         )}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-md p-6 mb-6">
+        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
               <h1 className="text-2xl font-bold text-gray-800 mb-4">Welcome to Firewatch</h1>
               <p className="text-gray-600 mb-4">
                 Your civil rights protection companion. Document, report, and stay informed.
@@ -70,43 +69,17 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ setActiveScreen, onPanicActivat
                   <p className="text-sm text-gray-600">Quick access to your legal protections</p>
                 </button>
                 <button 
-                  onClick={() => setActiveScreen('Document')}
+                  onClick={() => setActiveScreen('Act')}
                   className="bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition-colors cursor-pointer text-left"
                 >
-                  <h3 className="font-semibold text-gray-800">Document Safely</h3>
-                  <p className="text-sm text-gray-600">Secure recording with legal guidance</p>
+                  <h3 className="font-semibold text-gray-800">Act Now</h3>
+                  <p className="text-sm text-gray-600">Record & assist safely in real time</p>
                 </button>
         </div>
       </div>
 
-      <div className="bg-gray-800 rounded-lg p-4 shadow-lg">
-        <h2 className="text-lg font-semibold text-blue-400 mb-3">Area Status</h2>
-        <div className="space-y-3">
-                <div className="p-3 rounded-lg bg-gray-900/50 border-l-4 border-gray-500">
-                <div className="flex items-center justify-between">
-                    <span className="font-bold text-lg text-gray-400">READY</span>
-                    <span className="px-2 py-1 text-xs font-bold text-gray-900 rounded-full bg-gray-500">STANDBY</span>
-                  </div>
-                  <p className="text-sm text-gray-300 mt-1">System ready. Use tools below to scan your area.</p>
-                </div>
-                <p className="text-xs text-gray-500 text-center pt-2">Status updates when you scan your location</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-md p-4">
-              <h2 className="text-lg font-semibold mb-3 text-gray-800">
-                Active Alerts
-              </h2>
-              <div className="space-y-3">
-                <div className="border-l-4 border-gray-300 pl-3">
-                  <h3 className="font-medium text-sm text-gray-800">No active alerts</h3>
-                  <p className="text-xs text-gray-600">Scan your area to check for updates</p>
-                </div>
-              </div>
-            </div>
-        </div>
+      <div className="mb-6">
+        <LocationScanner />
       </div>
 
       <DashboardToolkit />
