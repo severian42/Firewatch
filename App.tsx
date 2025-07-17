@@ -15,6 +15,7 @@ import CameraView from './components/CameraView';
 import { useUserSettings } from './hooks/useUserSettings';
 import { useEvidence } from './hooks/useEvidence';
 import PWAPrompt from './components/PWAPrompt';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState<Screen>('Home');
@@ -152,6 +153,7 @@ const App: React.FC = () => {
           height: 100%;
         }
       `}</style>
+      <Analytics />
     </div>
   );
 };
