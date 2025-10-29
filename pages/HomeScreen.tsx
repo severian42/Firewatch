@@ -96,7 +96,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ setActiveScreen, onPanicActivat
           </div>
           <div className="relative">
             <iframe
-              src="https://padlet.com/embed/lf0l47ljszbto2uj"
+              src="https://iceout.org/"
               className="w-full h-[600px] md:h-[700px] lg:h-[800px]"
               style={{ border: 'none', display: 'block' }}
               allow="camera;microphone;geolocation"
